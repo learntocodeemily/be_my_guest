@@ -1,29 +1,36 @@
 <h1>Events#show</h1>
-<p>Name:
-  <%=@event.title%>
-</p>
-<p>Venue:
+<h4>
+  <%=@event.cuisine%>
+</h4>
+<h3><%= @event.title %></h3>
+<p><i class="fas fa-map-marked-alt"></i>
   <%= @event.location %>
 </p>
 <p>
-  Date:
-  <%= @event.date %>
+  <i class="far fa-calendar-alt"></i>
+  <%= @event.date.strftime("%b %e, %l:%M %p") %>
 </p>
-<p>Capacity:
+<p><i class="far fa-calendar-alt"></i>
   <%= @event.capacity %>
 </p>
-<p>Cuisine:
-  <%= @event.cuisine %>
-</p>
-<p>Price:
-  <%= @event.price%>
-</p>
-<p>Description:
-  <%= @event.description%>
+<p><i class="fas fa-yen-sign"></i>
+  <%= @event.price%>¥
 </p>
 <% if @event.image.nil? %>
   <%= image_tag ("https://images.unsplash.com/photo-1557872943-16a5ac26437e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1432&q=80")%>
 <% else %>
   <%= cl_image_tag @event.image%>
 <% end %>
+<p>About this event:
+  <%= @event.description%>
+</p>
+<p>Participants
+</p>
+<p>Reviews</p>
+<i class="far fa-star"></i>
+<i class="far fa-star"></i>
+<i class="far fa-star"></i>
+<i class="far fa-star"></i>
+<i class="far fa-star"></i>
 <%= link_to "edit", edit_event_path(@event.id)%>
+<p><%= link_to "home", events_path%></p>
