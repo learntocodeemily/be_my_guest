@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @events = Event.all
+    @events = policy_scope(Event).order(created_at: :desc)
   end
 
 
@@ -13,11 +13,13 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    authorize @event
   end
 
   def create
     # @user = User.last
     @event = Event.new(event_params)
+    authorize @event
     @event.user = @user
     if @event.save
       redirect_to @event

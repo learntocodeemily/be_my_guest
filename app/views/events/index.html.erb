@@ -4,4 +4,8 @@
     <%= link_to event.title, event_path(event.id)%>
   </h4>
 <% end %>
-<%= link_to "new", new_event_path%>
+
+<!-- only signed in user can create an event -->
+<% if user_signed_in? %>
+  <%= link_to "new", new_event_path%>
+<% end %>
