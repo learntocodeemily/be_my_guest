@@ -1,12 +1,20 @@
 <h1>Cook.Share.Love</h1>
 <h2>Latest events</h2>
-<% @events.each do |event| %>
-  <h4>
-    <%= link_to event.title, event_path(event.id)%>
-  </h4>
-  <p><%= event.location %></p>
-  <%= cl_image_tag event.image%>
-<% end %>
+<div class="row">
+  <% @events.each do |event| %>
+    <div class="col-sm-12 col-md-6 col-lg-4">
+      <div class="card my-3">
+        <div class="card-img-top" style="background-image: url('<%= cl_image_path event.image %>')"></div>
+        <div class="card-body">
+          <h5>
+            <%= link_to event.title, event_path(event.id)%>
+          </h5>
+          <p><%= event.location %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 
 <!-- only signed in user can create an event -->
