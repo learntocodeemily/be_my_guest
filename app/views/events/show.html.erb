@@ -1,4 +1,6 @@
 <h1>Events#show</h1>
+
+<%=  link_to "Book", new_event_booking_path(@event.id)%>
 <!-- a user can only delete the event created by himself -->
 <% if policy(@event).destroy?%>
   <%= link_to event_path(@event.id), method: :delete, data: {confirm: 'Are you sure?'} do %>
@@ -38,7 +40,6 @@
 <i class="far fa-star"></i>
 <i class="far fa-star"></i>
 <i class="far fa-star"></i>
-
 <!-- a user can edit the event that he created -->
 <% if policy(@event).edit? %>
   <%= link_to "edit", edit_event_path(@event.id)%>
