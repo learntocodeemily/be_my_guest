@@ -1,2 +1,38 @@
-<h1>Bookings#new</h1>
-<p>Find me in app/views/bookings/new.html.erb</p>
+<h1>Booking Confirmation</h1>
+<h4>
+  <%=@event.cuisine%>
+</h4>
+<h3><%= @event.title %></h3>
+<p><i class="fas fa-map-marked-alt"></i>
+  <%= @event.location %>
+</p>
+<p>
+  <i class="far fa-calendar-alt"></i>
+  <%= @event.date.strftime("%b %e, %l:%M %p") %>
+</p>
+<p><i class="far fa-calendar-alt"></i>
+  <%= @event.capacity %>
+</p>
+<p><i class="fas fa-yen-sign"></i>
+  <%= @event.price%>¥
+</p>
+<% if @event.image.nil? %>
+  <%= image_tag ("https://images.unsplash.com/photo-1557872943-16a5ac26437e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1432&q=80")%>
+<% else %>
+  <%= cl_image_tag @event.image%>
+<% end %>
+<p>About this event:
+  <%= @event.description%>
+</p>
+<div class="main-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 offset-sm-2 col-sm-8">
+        <%=simple_form_for [@event, @booking] do |f| %>
+          <%= f.check_box :payment %>
+          <%= f.submit "Confirm Payment?", class: "btn btn-ghost border-dark rounded-lg" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
