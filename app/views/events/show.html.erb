@@ -32,5 +32,9 @@
 <i class="far fa-star"></i>
 <i class="far fa-star"></i>
 <i class="far fa-star"></i>
-<%= link_to "edit", edit_event_path(@event.id)%>
+
+<!-- a user can edit the event that he created -->
+<% if policy(@event).edit? %>
+  <%= link_to "edit", edit_event_path(@event.id)%>
+<% end %>
 <p><%= link_to "home", events_path%></p>

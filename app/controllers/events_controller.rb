@@ -29,10 +29,11 @@ class EventsController < ApplicationController
   end
 
   def edit
-
+    authorize @event
   end
 
   def update
+    authorize @event
     if @event.update(event_params)
       redirect_to @event
     else
