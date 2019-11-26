@@ -7,6 +7,10 @@
   <p><%= event.location %></p>
   <%= cl_image_tag event.image%>
 <% end %>
-<p>
+
+
+<!-- only signed in user can create an event -->
+<% if user_signed_in? %>
   <%= link_to "new", new_event_path%>
-</p>
+<% end %>
+
