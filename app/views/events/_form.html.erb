@@ -7,12 +7,16 @@
           <%= f.input :cuisine %>
           <%= f.input :location %>
           <%= f.date_select :date %>
-          <%= f.input :price%>
+          <%= f.input :price, as: :integer %>
           <%= f.input :capacity, collection: 2..12 %>
-          <%= f.input :description %>
+          <%= f.input :description, as: :text  %>
           <%= f.input :image %>
-          <%#= f.input :image_cache, as: :hidden %>
-          <%= f.submit "add event", class: "btn btn-ghost border-dark rounded-lg"  %>
+          <%= f.input :image_cache, as: :hidden %>
+          <% if edit%>
+            <%= f.submit "edit event", class: "btn btn-ghost border-dark rounded-lg"  %>
+          <% else %>
+            <%= f.submit "add event", class: "btn btn-ghost border-dark rounded-lg"  %>
+          <% end %>
         <% end %>
       </div>
     </div>
