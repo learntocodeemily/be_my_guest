@@ -1,0 +1,8 @@
+<div class="form-container">
+  <%=simple_form_for [@event] do |f| %>
+    <%= f.input :location %>
+    <%= f.input :cuisine, collection: ["chinese", "italian", "japanese", "french", "belgian"]%>
+    <%= f.input :date%>
+    <%= f.submit "filter", class: "btn btn-primary" %>
+  <% end %>
+</div>
