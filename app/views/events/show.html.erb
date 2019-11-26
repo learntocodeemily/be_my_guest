@@ -1,43 +1,99 @@
-<h1>Events#show</h1>
-<%= link_to event_path(@event.id), method: :delete, data: {confirm: 'Are you sure?'} do %>
-  <i class="far fa-trash-alt"></i>
-<% end %>
-<h4>
-  <%=@event.cuisine%>
-</h4>
-<h3><%= @event.title %></h3>
-<p><i class="fas fa-map-marked-alt"></i>
-  <%= @event.location %>
-</p>
-<p>
-  <i class="far fa-calendar-alt"></i>
-  <%= @event.date.strftime("%b %e, %l:%M %p") %>
-</p>
-<p><i class="far fa-calendar-alt"></i>
-  <%= @event.capacity %>
-</p>
-<p><i class="fas fa-yen-sign"></i>
-  <%= @event.price%>¥
-</p>
-<% if @event.image.nil? %>
-  <%= image_tag ("https://images.unsplash.com/photo-1557872943-16a5ac26437e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1432&q=80")%>
-<% else %>
-  <%= cl_image_tag @event.image%>
-<% end %>
-<p>About this event:
-  <%= @event.description%>
-</p>
-<p>Participants
-</p>
-<p>Reviews</p>
-<i class="far fa-star"></i>
-<i class="far fa-star"></i>
-<i class="far fa-star"></i>
-<i class="far fa-star"></i>
-<i class="far fa-star"></i>
+<div class="container my-5">
 
-<!-- a user can edit the event that he created -->
-<% if policy(@event).edit? %>
-  <%= link_to "edit", edit_event_path(@event.id)%>
-<% end %>
-<p><%= link_to "home", events_path%></p>
+  <!-- Basic info about the event -->
+  <div class="row">
+    <div class="col-sm-12 col-md-4">
+      <h4><%=@event.cuisine%></h4>
+      <h2><%= @event.title %></h2>
+      <p><i class="fas fa-map-marked-alt"></i>
+        <%= @event.location %>
+      </p>
+      <p>
+        <i class="far fa-calendar-alt"></i>
+        <%= @event.date.strftime("%b %e, %l:%M %p") %>
+      </p>
+      <p><i class="far fa-calendar-alt"></i>
+        <%= @event.capacity %>
+      </p>
+      <p><i class="fas fa-yen-sign"></i>
+        <%= @event.price%>¥
+      </p>
+      <!-- TODO (huifang): verify the link below -->
+      <%= link_to "RSVP", new_event_booking_path(@event.id), class: "btn-yellow" %>
+    </div>
+    <div class="col-sm-12 col-md-8">
+      <% if @event.image.nil? %>
+        <%= image_tag ("https://images.unsplash.com/photo-1557872943-16a5ac26437e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1432&q=80")%>
+      <% else %>
+        <!-- <%= cl_image_tag @event.image %> -->
+        <div class="card-img-large rounded" style="background-image: url('<%= cl_image_path @event.image %>')"></div>
+      <% end %>
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <!-- Event description -->
+  <div class="row">
+    <div class="col-sm-12 col-md-4">
+      <h4>About this event</h4>
+    </div>
+    <div class="col-sm-12 col-md-8">
+      <p>
+        <%= @event.description%>
+      </p>
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <!-- Participants -->
+  <!-- TODO (huifang): Bookings to be seeded -->
+  <div class="row">
+    <div class="col-sm-12 col-md-4">
+      <h4>Participants</h4>
+    </div>
+    <div class="col-sm-12 col-md-8">
+      <p>
+        <%= @event.bookings.length %>
+      </p>
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <!-- Reviews -->
+  <!-- TODO (huifang): Reviews to be seeded -->
+  <div class="row">
+    <div class="col-sm-12 col-md-4">
+      <h4>Reviews</h4>
+      <i class="far fa-star"></i>
+      <i class="far fa-star"></i>
+      <i class="far fa-star"></i>
+      <i class="far fa-star"></i>
+      <i class="far fa-star"></i>
+    </div>
+    <div class="col-sm-12 col-md-8">
+      <p>
+        Reviews to be seeded!
+      </p>
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <!-- TODO (Maggie): move the below links next to the title? -->
+  <p>The below links / buttons need to be positioned. </p>
+
+  <!-- a user can edit the event that he created -->
+  <% if policy(@event).edit? %>
+    <%= link_to "edit", edit_event_path(@event.id)%>
+  <% end %>
+
+  <!-- a user can delete the event that he created -->
+  <!-- TODO (huifang/Emily): policy to be added? -->
+  <%= link_to event_path(@event.id), method: :delete, data: {confirm: 'Are you sure?'} do %>
+    <i class="far fa-trash-alt"></i>
+  <% end %>
+
+</div>
