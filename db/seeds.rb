@@ -23,7 +23,7 @@ Event.create!(title: Faker::Marketing.buzzwords ,
               cuisine: ["chinese", "italian", "japanese", "french", "belgian"].sample,
               price: rand(20..200),
               capacity: rand(3..10),
-              image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80", user: u1)
+              remote_image_url: "https://res.cloudinary.com/fangb/image/upload/v1574401381/nhns2fgybuzdd5xkczwm.jpg", user: u1)
 
 
 u2 = User.create!(email: Faker::Internet.email, password: "12345678",
@@ -48,7 +48,7 @@ Event.create!(title: Faker::Marketing.buzzwords ,
               cuisine: ["chinese", "italian", "japanese", "french", "belgian"].sample,
               price: rand(20..200),
               capacity: rand(3..10),
-              image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80", user: u2)
+              remote_image_url: "https://res.cloudinary.com/fangb/image/upload/v1574409769/ovnzqynfwe5qxvt5bx7q.jpg", user: u2)
 
 
 

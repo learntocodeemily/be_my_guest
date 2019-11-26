@@ -15,7 +15,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    # @user = User.last
+    @user = current_user
     @event = Event.new(event_params)
     @event.user = @user
     if @event.save
@@ -28,6 +28,17 @@ class EventsController < ApplicationController
   def edit
 
   end
+
+  def update
+    if @event.update(event_params)
+      redirect_to @event
+    else
+      render :edit
+    end
+  end
+
+
+
 
   private
 

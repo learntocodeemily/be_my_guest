@@ -16,8 +16,14 @@
   <%= @event.cuisine %>
 </p>
 <p>Price:
-  <%= @event.price %>
+  <%= @event.price%>
 </p>
 <p>Description:
-  <%= @event.description %>
+  <%= @event.description%>
 </p>
+<% if @event.image.nil? %>
+  <%= image_tag ("https://images.unsplash.com/photo-1557872943-16a5ac26437e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1432&q=80")%>
+<% else %>
+  <%= cl_image_tag @event.image%>
+<% end %>
+<%= link_to "edit", edit_event_path(@event.id)%>
