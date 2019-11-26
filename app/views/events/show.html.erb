@@ -1,4 +1,7 @@
 <h1>Events#show</h1>
+<%= link_to event_path(@event.id), method: :delete, data: {confirm: 'Are you sure?'} do %>
+  <i class="far fa-trash-alt"></i>
+<% end %>
 <h4>
   <%=@event.cuisine%>
 </h4>
