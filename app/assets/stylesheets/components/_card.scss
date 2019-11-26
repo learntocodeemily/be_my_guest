@@ -1,0 +1,18 @@
+.card {
+  border-radius: 6px;
+  .card-img-top {
+    border-radius: 5px 5px 0 0;
+    padding-top: 75%;
+    background-size: cover;
+    background-position: center center;
+  }
+  .card-body {
+    height: 120px;
+  }
+  a {
+    color: $black;
+  }
+  p {
+    color: $gray;
+  }
+}
