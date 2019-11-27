@@ -13,5 +13,3 @@ Rails.application.routes.draw do
   end
   resources :reviews, only: [ :index, :edit, :update, :destroy]
 end
-
-#changed routes controller

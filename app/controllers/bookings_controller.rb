@@ -34,5 +34,3 @@ class BookingsController < ApplicationController
     params.require(:booking).permit(:payment)
   end
 end
-
-#booking controller
