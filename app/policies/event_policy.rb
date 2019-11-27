@@ -9,15 +9,17 @@ class EventPolicy < ApplicationPolicy
     return true
   end
 
-  def edit?
-    record.user == user
+  def update?
+    user_is_owner?
   end
 
-  # def update?
-  #   record.user == user
-  # end
+  def destroy?
+    user_is_owner?
+  end
 
-  # def destroy?
-  #   record.user == user
-  # end
+  private
+
+  def user_is_owner?
+    record.user == user
+  end
 end
