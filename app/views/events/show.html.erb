@@ -88,10 +88,11 @@
     <%= link_to "edit", edit_event_path(@event.id)%>
   <% end %>
 
-  <!-- a user can delete the event that he created -->
-  <!-- TODO (huifang/Emily): policy to be added? -->
-  <%= link_to event_path(@event.id), method: :delete, data: {confirm: 'Are you sure?'} do %>
-    <i class="far fa-trash-alt"></i>
+  <!-- a user can only delete the event created by himself -->
+  <% if policy(@event).destroy?%>
+    <%= link_to event_path(@event.id), method: :delete, data: {confirm: 'Are you sure?'} do %>
+      <i class="far fa-trash-alt"></i>
+    <% end %>
   <% end %>
 
 </div>
