@@ -4,7 +4,7 @@
   <!-- Basic info about the event -->
   <div class="row">
     <div class="col-sm-12 col-md-4">
-      <h4 class="text-uppercase"><%=@event.cuisine%></h4>
+      <h4 class="text-uppercase text-primary"><%=@event.cuisine%></h4>
       <h2><%= @event.title %></h2>
       <p><i class="fas fa-map-marked-alt"></i>
         <%= @event.location %>
@@ -19,7 +19,7 @@
       <p><i class="fas fa-yen-sign"></i>
         <%= @event.price%>¥
       </p>
-      <%= link_to "Book", new_event_booking_path(@event.id), class: "btn-yellow" %>
+      <%= link_to "Book", new_event_booking_path(@event.id), class: "btn btn-primary text-light" %>
     </div>
     <div class="col-sm-12 col-md-8">
       <% if @event.image.nil? %>
