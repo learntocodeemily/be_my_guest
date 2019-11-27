@@ -5,6 +5,7 @@ class EventsController < ApplicationController
 
 
   def index
+    # raise
     @events = policy_scope(Event).order(created_at: :desc)
     # @events = Event.all
     @search = params[:search]

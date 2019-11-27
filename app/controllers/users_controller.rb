@@ -1,5 +1,12 @@
 class UsersController < ApplicationController
+  def index
+
+
+  end
+
   def show
+    @events = current_user.events
+    @bookings = current_user.bookings
   end
 
   def new
@@ -7,4 +14,5 @@ class UsersController < ApplicationController
 
   def edit
   end
+
 end
