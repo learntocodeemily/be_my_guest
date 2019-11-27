@@ -1,7 +1,9 @@
 class ReviewsController < ApplicationController
   before_action :find_booking, only: [:new, :create]
 
+
   def index
+    @booking = policy_scope(Booking)
     @reviews = Review.all
   end
 
@@ -13,6 +15,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user = current_user
     @review.booking = @booking
+    authorize @booking
 
     if @review.save
       # raise
@@ -26,6 +29,7 @@ class ReviewsController < ApplicationController
 
   def find_booking
     @booking = Booking.find(params[:booking_id])
+    authorize @booking
   end
 
   def review_params
