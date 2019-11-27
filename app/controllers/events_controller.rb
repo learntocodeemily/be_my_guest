@@ -1,12 +1,12 @@
 class EventsController < ApplicationController
 
   before_action :find_event, only: [ :show, :edit, :update, :destroy ]
-  # skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
 
   def index
-    # @events = policy_scope(Event).order(created_at: :desc)
-    @events = Event.all
+    @events = policy_scope(Event).order(created_at: :desc)
+    # @events = Event.all
     @search = params[:search]
     if @search.present?
       @cuisine = @search["cuisine"]
@@ -20,13 +20,13 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
-    # authorize @event
+    authorize @event
   end
 
   def create
     @user = current_user
     @event = Event.new(event_params)
-    # authorize @event
+    authorize @event
     @event.user = @user
     if @event.image.nil?
       @event.image = https://res.cloudinary.com/fangb/image/upload/v1574826240/bqk8ih1xicux35olyjmd.jpg

@@ -1,14 +1,16 @@
 class BookingsController < ApplicationController
   before_action :find_event, only: [:new, :create, :show]
 
+  def index
+    @bookings = policy_scope(Booking)
+  end
+
   def show
-    @booking = Booking.find(params[:booking_id])
-    authorize @booking
   end
 
   def new
     @booking = Booking.new
-    # authorize @booking
+    authorize @booking
   end
 
   def create
