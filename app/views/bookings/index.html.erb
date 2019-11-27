@@ -1,6 +1,15 @@
-<h2>Show Bookings</h2>
-<% @bookings.each do |booking| %>
-  <p><%= booking.event.title %> </p>
-  <p><%= booking.event.date %> </p>
-  <%=  link_to "Review", new_booking_review_path(booking.id)%>
-<% end %>
+<div class="container my-5">
+  <h2>All Your Bookings</h2>
+  <% @bookings.each do |booking| %>
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <div class="card">
+          <p><%= booking.event.title %> </p>
+          <p><%= booking.event.date %> </p>
+          <%=  link_to "Review", new_booking_review_path(booking.id)%>
+        </div>
+
+      </div>
+    </div>
+  <% end %>
+</div>
