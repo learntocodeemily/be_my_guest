@@ -3,7 +3,7 @@
   <!-- Basic info about the event -->
   <div class="row">
     <div class="col-sm-12 col-md-4">
-      <h4><%=@event.cuisine%></h4>
+      <h4 class="text-uppercase"><%=@event.cuisine%></h4>
       <h2><%= @event.title %></h2>
       <p><i class="fas fa-map-marked-alt"></i>
         <%= @event.location %>
@@ -18,14 +18,12 @@
       <p><i class="fas fa-yen-sign"></i>
         <%= @event.price%>¥
       </p>
-      <!-- TODO (huifang): verify the link below -->
-      <%= link_to "RSVP", new_event_booking_path(@event.id), class: "btn-yellow" %>
+      <%= link_to "Book", new_event_booking_path(@event.id), class: "btn-yellow" %>
     </div>
     <div class="col-sm-12 col-md-8">
       <% if @event.image.nil? %>
         <%= image_tag ("https://images.unsplash.com/photo-1557872943-16a5ac26437e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1432&q=80")%>
       <% else %>
-        <!-- <%= cl_image_tag @event.image %> -->
         <div class="card-img-large rounded" style="background-image: url('<%= cl_image_path @event.image %>')"></div>
       <% end %>
     </div>
