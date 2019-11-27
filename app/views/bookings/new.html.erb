@@ -30,6 +30,7 @@
       <div class="col-xs-12 offset-sm-2 col-sm-8">
         <%=simple_form_for [@event, @booking] do |f| %>
           <%= f.check_box :payment %>
+          <%= f.hidden_field :event_id, value: params[:event] %>
           <%= f.submit "Confirm Payment?", class: "btn btn-ghost border-dark rounded-lg" %>
         <% end %>
       </div>
