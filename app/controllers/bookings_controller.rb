@@ -1,8 +1,14 @@
 class BookingsController < ApplicationController
   before_action :find_event, only: [:new, :create, :show]
 
+  def show
+    @booking = Booking.find(params[:booking_id])
+    authorize @booking
+  end
+
   def new
     @booking = Booking.new
+    # authorize @booking
   end
 
   def create
@@ -17,14 +23,11 @@ class BookingsController < ApplicationController
     end
   end
 
-  def show
-    @booking = Booking.find(params[:booking_id])
-  end
-
   private
 
   def find_event
     @event = Event.find(params[:event_id])
+    authorize @event
   end
 
   def booking_params
