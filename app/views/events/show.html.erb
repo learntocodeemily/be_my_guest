@@ -1,6 +1,4 @@
-
 <div class="container my-5">
-
   <!-- Basic info about the event -->
   <div class="row">
     <div class="col-sm-12 col-md-4">
@@ -29,9 +27,7 @@
       <% end %>
     </div>
   </div>
-
   <hr class="my-5">
-
   <!-- Event description -->
   <div class="row">
     <div class="col-sm-12 col-md-4">
@@ -43,9 +39,7 @@
       </p>
     </div>
   </div>
-
   <hr class="my-5">
-
   <!-- Participants -->
   <!-- TODO (huifang): Bookings to be seeded -->
   <div class="row">
@@ -58,9 +52,7 @@
       </p>
     </div>
   </div>
-
   <hr class="my-5">
-
   <!-- Reviews -->
   <!-- TODO (huifang): Reviews to be seeded -->
   <div class="row">
@@ -78,22 +70,17 @@
       </p>
     </div>
   </div>
-
   <hr class="my-5">
-
   <!-- TODO (Maggie): move the below links next to the title? -->
   <p>The below links / buttons need to be positioned. </p>
-
   <!-- a user can edit the event that he created -->
   <% if policy(@event).edit? %>
     <%= link_to "edit", edit_event_path(@event.id)%>
   <% end %>
-
   <!-- a user can only delete the event created by himself -->
   <% if policy(@event).destroy?%>
     <%= link_to event_path(@event.id), method: :delete, data: {confirm: 'Are you sure?'} do %>
       <i class="far fa-trash-alt"></i>
     <% end %>
   <% end %>
-
 </div>
