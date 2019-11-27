@@ -41,57 +41,69 @@ u4 = User.create!(email: Faker::Internet.email, password: "12345678",
                   last_name: Faker::Name.last_name
                   )
 
-Event.create!(title: "Rustic BBQ dinner" ,
-              location: "JingAn District, Shanghai",
-              date: Date.today,
-              description: Faker::Lorem.sentences,
-              cuisine: "Australian",
-              price: 80,
-              capacity: rand(3..10),
-              remote_image_url: "https://res.cloudinary.com/fangb/image/upload/v1574751981/bemyguest/Anderson_Wolf_Chanterelle_Photography_andersonwolfrehearsal1074web_low_bmorbs.jpg", user: u2)
+e1 = Event.create!(title: "Rustic BBQ dinner" ,
+                   location: "JingAn District, Shanghai",
+                   date: Date.today,
+                   description: Faker::Lorem.sentences,
+                   cuisine: "Australian",
+                   price: 80,
+                   capacity: rand(3..10),
+                   remote_image_url: "https://res.cloudinary.com/fangb/image/upload/v1574751981/bemyguest/Anderson_Wolf_Chanterelle_Photography_andersonwolfrehearsal1074web_low_bmorbs.jpg", user: u2)
 
 
-Event.create!(title: "Chilli Cook
+e2 = Event.create!(title: "Chilli Cook
   Off" ,
-              location: "Putuo District, Shanghai",
-              date: Date.today,
-              description: Faker::Lorem.sentences,
-              cuisine: "Sichuan",
-              price: 100,
-              capacity: rand(3..10),
-              remote_image_url: "https://res.cloudinary.com/fangb/image/upload/v1574751981/bemyguest/Chili_Cook-Off_Guide_-_The_Midwestival_ib6j9b.jpg", user: u2)
+                   location: "Putuo District, Shanghai",
+                   date: Date.today,
+                   description: Faker::Lorem.sentences,
+                   cuisine: "Sichuan",
+                   price: 100,
+                   capacity: rand(3..10),
+                   remote_image_url: "https://res.cloudinary.com/fangb/image/upload/v1574751981/bemyguest/Chili_Cook-Off_Guide_-_The_Midwestival_ib6j9b.jpg", user: u2)
 
 
 
-Event.create!(title: "Dumpling Dinner" ,
-              location: "Minghang District, Shanghai",
-              date: Date.today,
-              description: Faker::Lorem.sentences,
-              cuisine: "Shanghainese",
-              price: 20,
-              capacity: rand(3..10),
-              remote_image_url: "https://res.cloudinary.com/fangb/image/upload/v1574751981/bemyguest/6940302078_7a555dee8c_o_weu8hr.jpg", user: u3)
+e3 = Event.create!(title: "Dumpling Dinner" ,
+                   location: "Minghang District, Shanghai",
+                   date: Date.today,
+                   description: Faker::Lorem.sentences,
+                   cuisine: "Shanghainese",
+                   price: 20,
+                   capacity: rand(3..10),
+                   remote_image_url: "https://res.cloudinary.com/fangb/image/upload/v1574751981/bemyguest/6940302078_7a555dee8c_o_weu8hr.jpg", user: u3)
 
-Event.create!(title: "Sushi Party" ,
-              location: "Minghang District, Shanghai",
-              date: Date.today,
-              description: Faker::Lorem.sentences,
-              cuisine: "Japanese",
-              price: 45,
-              capacity: rand(3..10),
-              remote_image_url: "https://res.cloudinary.com/fangb/image/upload/v1574754171/bemyguest/6a00d8342114db53ef01a3fcf9d523970b_tgyy5g.png", user: u3)
+e4 = Event.create!(title: "Sushi Party" ,
+                   location: "Minghang District, Shanghai",
+                   date: Date.today,
+                   description: Faker::Lorem.sentences,
+                   cuisine: "Japanese",
+                   price: 45,
+                   capacity: rand(3..10),
+                   remote_image_url: "https://res.cloudinary.com/fangb/image/upload/v1574754171/bemyguest/6a00d8342114db53ef01a3fcf9d523970b_tgyy5g.png", user: u3)
 
 
-Event.create!(title: "Crawfish Boil
+e5 = Event.create!(title: "Crawfish Boil
   Party" ,
-              location: "JingAn District, Shanghai",
-              date: Date.today,
-              description: Faker::Lorem.sentences,
-              cuisine: "American",
-              price: 99,
-              capacity: rand(3..10),
-              remote_image_url: "https://res.cloudinary.com/fangb/image/upload/v1574754345/bemyguest/wpid9068-HitherandThither_AshleyMuirBruhn-12_x1rxkg.jpg", user: u4)
+                   location: "JingAn District, Shanghai",
+                   date: Date.today,
+                   description: Faker::Lorem.sentences,
+                   cuisine: "American",
+                   price: 99,
+                   capacity: rand(3..10),
+                   remote_image_url: "https://res.cloudinary.com/fangb/image/upload/v1574754345/bemyguest/wpid9068-HitherandThither_AshleyMuirBruhn-12_x1rxkg.jpg", user: u4)
 
+Booking.create!(payment: true, user: u4, event: e5 )
+Booking.create!(payment: true, user: u3, event: e4 )
+Booking.create!(payment: true, user: u2, event: e2 )
+
+Review.create!(comment: Faker::Lorem.sentences,
+               rating: rand(1..5), user: u4, booking: e5)
+Review.create!(comment: Faker::Lorem.sentences,
+               rating: rand(1..5), user: u4, booking: e5)
+Review.create!(comment: Faker::Lorem.sentences,
+               rating: rand(1..5), user: u4, booking: e5)
 
 puts "Created #{Event.count} events"
 puts "Created #{User.count} users"
+puts "Created #{Booking.count} booking"
+puts "Created #{Review.count} review"
