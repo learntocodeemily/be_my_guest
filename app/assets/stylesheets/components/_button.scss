@@ -4,10 +4,9 @@
   height: 48px;
   color: $white;
   font-weight: 700;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding: 10px 30px;
   &:hover {
     color: $white;
-    background-color: $yellow-dark
+    background-color: $orange;
   }
 }
