@@ -1,7 +1,7 @@
-.btn-yellow {
+.btn-primary {
   background-color: $yellow;
   border-radius: 4px;
-  height: 48px;
+  height: 45px;
   color: $white;
   font-weight: 700;
   padding: 10px 30px;
@@ -9,4 +9,11 @@
     color: $white;
     background-color: $orange;
   }
+}
+.btn-white {
+  background-color: $white;
+  border-radius: 4px;
+  height: 45px;
+  font-weight: 700;
+  padding: 10px 30px;
 }

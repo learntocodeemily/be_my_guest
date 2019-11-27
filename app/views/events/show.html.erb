@@ -2,23 +2,49 @@
   <!-- Basic info about the event -->
   <div class="row">
     <div class="col-sm-12 col-md-4">
-      <h4 class="text-uppercase"><%=@event.cuisine%></h4>
-      <h2><%= @event.title %></h2>
-      <p><i class="fas fa-map-marked-alt"></i>
-        <%= @event.location %>
-      </p>
-      <p>
-        <i class="far fa-calendar-alt"></i>
-        <%= @event.date.strftime("%b %e, %l:%M %p") %>
-      </p>
-      <p><i class="far fa-calendar-alt"></i>
-        <%= @event.capacity %>
-      </p>
-      <p><i class="fas fa-yen-sign"></i>
-        <%= @event.price%>¥
-      </p>
-      <%= link_to "Book", new_event_booking_path(@event.id), class: "btn-yellow" %>
+
+      <h4 class="text-uppercase text-primary"><%=@event.cuisine%></h4>
+      <h2 class="mb-3"><%= @event.title %></h2>
+      <div class="mb-4">
+        <!-- a user can edit the event that he created -->
+        <% if policy(@event).edit? %>
+          <%= link_to edit_event_path(@event.id) do %>
+            <i class="far fa-edit"></i>
+          <% end %>
+        <% end %>
+        <!-- a user can only delete the event created by himself -->
+        <% if policy(@event).destroy?%>
+          <%= link_to event_path(@event.id), method: :delete, data: {confirm: 'Are you sure?'} do %>
+            <i class="far fa-trash-alt"></i>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="mb-4">
+        <ul class="list-unstyled">
+          <li>
+            <i class="fas fa-map-marker-alt"></i>
+            <%= @event.location %>
+          </li>
+          <li>
+            <i class="fas fa-clock"></i>
+            <%= @event.date.strftime("%b %e, %l:%M %p") %>
+          </li>
+          <li>
+            <i class="fas fa-user-friends"></i>
+            <%= @event.capacity %>
+          </li>
+          <li>
+            <i class="fas fa-yen-sign"></i>
+            <%= @event.price%>
+          </li>
+        </ul>
+      </div>
+
+      <%= link_to "Book", new_event_booking_path(@event.id), class: "btn btn-primary text-light" %>
+
     </div>
+
     <div class="col-sm-12 col-md-8">
       <% if @event.image.nil? %>
         <%= image_tag ("https://images.unsplash.com/photo-1557872943-16a5ac26437e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1432&q=80")%>
@@ -26,6 +52,7 @@
         <div class="card-img-large rounded" style="background-image: url('<%= cl_image_path @event.image %>')"></div>
       <% end %>
     </div>
+
   </div>
   <hr class="my-5">
   <!-- Event description -->
@@ -70,17 +97,5 @@
       </p>
     </div>
   </div>
-  <hr class="my-5">
-  <!-- TODO (Maggie): move the below links next to the title? -->
-  <p>The below links / buttons need to be positioned. </p>
-  <!-- a user can edit the event that he created -->
-  <% if policy(@event).edit? %>
-    <%= link_to "edit", edit_event_path(@event.id)%>
-  <% end %>
-  <!-- a user can only delete the event created by himself -->
-  <% if policy(@event).destroy?%>
-    <%= link_to event_path(@event.id), method: :delete, data: {confirm: 'Are you sure?'} do %>
-      <i class="far fa-trash-alt"></i>
-    <% end %>
-  <% end %>
+
 </div>

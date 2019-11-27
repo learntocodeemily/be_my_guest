@@ -2,13 +2,22 @@
   background-size: cover;
   background-position: center;
   padding: 150px 0;
+  h2 {
+    color: $white;
+  }
+  p {
+    color: $white;
+    font-size: 18px;
+    width: 400px;
+  }
+  .form-control {
+    height: 45px;
+    width: 280px;
+    border: none;
+    border-radius: 6px 0 0 6px;
+  }
+  .btn {
+    border-radius: 0 6px 6px 0;
+  }
 }
 
-.banner h2 {
-  color: $white;
-}
-
-.banner p {
-  color: $white;
-  font-size: 18px;
-}

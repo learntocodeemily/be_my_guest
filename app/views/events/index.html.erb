@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: url(<%= image_path "banner" %>);">
+<div class="banner" style="background-image: url(<%= image_path "banner.jpg" %>);">
   <div class="container">
     <h2>Cook. Share. Love</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscin, sed do eiusmod tempor.</p>
@@ -25,8 +25,4 @@
       </div>
     <% end %>
   </div>
-  <!-- only signed in user can create an event -->
-  <% if user_signed_in? %>
-    <%= link_to "new", new_event_path%>
-  <% end %>
 </div>
