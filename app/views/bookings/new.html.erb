@@ -1,38 +1,49 @@
-<h1>Confirm booking</h1>
-<h4>
-  <%=@event.cuisine%>
-</h4>
-<h3><%= @event.title %></h3>
-<p><i class="fas fa-map-marked-alt"></i>
-  <%= @event.location %>
-</p>
-<p>
-  <i class="far fa-calendar-alt"></i>
-  <%= @event.date.strftime("%b %e, %l:%M %p") %>
-</p>
-<p><i class="far fa-calendar-alt"></i>
-  <%= @event.capacity %>
-</p>
-<p><i class="fas fa-yen-sign"></i>
-  <%= @event.price%>¥
-</p>
-<% if @event.image.nil? %>
-  <%= image_tag ("https://images.unsplash.com/photo-1557872943-16a5ac26437e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1432&q=80")%>
-<% else %>
-  <%= cl_image_tag @event.image%>
-<% end %>
-<p>About this event:
-  <%= @event.description%>
-</p>
-<div class="main-container">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 offset-sm-2 col-sm-8">
-        <%=simple_form_for [@event, @booking] do |f| %>
-          <%= f.check_box :payment %>
-          <%= f.hidden_field :event_id, value: params[:event] %>
-          <%= f.submit "Confirm Payment?", class: "btn btn-ghost border-dark rounded-lg" %>
-        <% end %>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-sm-12 col-md-4">
+      <h4>Confirm booking: </h4>
+      <h2><%= @event.title %></h2>
+      <ul class="list-unstyled">
+        <li>
+          <i class="fas fa-map-marker-alt"></i>
+          <%= @event.location %>
+        </li>
+        <li>
+          <i class="fas fa-clock"></i>
+          <%= @event.date.strftime("%b %e, %l:%M %p") %>
+        </li>
+        <li>
+          <i class="fas fa-user-friends"></i>
+          <%= @event.capacity %>
+        </li>
+        <li>
+          <i class="fas fa-yen-sign"></i>
+          <%= @event.price%>
+        </li>
+      </ul>
+      <%=simple_form_for [@event, @booking] do |f| %>
+        <%= f.check_box :payment %>
+        <span>Make the payment by magic!</span>
+        <%= f.hidden_field :event_id, value: params[:event] %>
+        <%= f.submit "Confirm Payment", class: "btn btn-primary text-light" %>
+      <% end %>
+    </div>
+
+    <div class="col-sm-12 col-md-8">
+      <% if @event.image.nil? %>
+        <%= image_tag ("https://images.unsplash.com/photo-1557872943-16a5ac26437e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1432&q=80")%>
+      <% else %>
+        <div class="card-img-large rounded" style="background-image: url('<%= cl_image_path @event.image %>')"></div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="main-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 offset-sm-2 col-sm-8">
+
+        </div>
       </div>
     </div>
   </div>
