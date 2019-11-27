@@ -6,7 +6,6 @@ class EventsController < ApplicationController
     @events = policy_scope(Event).order(created_at: :desc)
   end
 
-
   def show
 
   end
