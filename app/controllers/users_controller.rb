@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def show
     @events = current_user.events
     @bookings = current_user.bookings
+    @eventcount = @events.count
   end
 
   def new

@@ -1,4 +1,5 @@
 <h2>My Events</h2>
+<p>You have <%=@events.count %> events</p>
 <% @events.each do |event| %>
   <div class="col-sm-12 col-md-6 col-lg-4">
     <div class="card my-3">
@@ -14,6 +15,7 @@
   </div>
 <% end %>
 <h2>My BOOKINGS</h2>
+<p>You have <%=@bookings.count %> events</p>
 <% @bookings.each do |booking| %>
   <div class="col-sm-12 col-md-6 col-lg-4">
     <div class="card my-3">
