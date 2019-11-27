@@ -10,7 +10,6 @@ class BookingsController < ApplicationController
   end
 
   def create
-
     @booking = Booking.new(booking_params)
     @booking.event = @event
     @booking.user = current_user
@@ -35,3 +34,5 @@ class BookingsController < ApplicationController
     params.require(:booking).permit(:payment)
   end
 end
+
+#booking controller
