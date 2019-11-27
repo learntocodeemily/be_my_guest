@@ -1,11 +1,11 @@
 <div class="banner" style="background-image: url(<%= image_path "banner.jpg" %>);">
-  <%= simple_form_for :search, url: events_path, method: "GET", html: { class: 'form-inline' } do |f| %>
-    <%= f.input :cuisine, input_html: {value: ""} %>
-    <%= f.submit "Search", class: "btn btn-primary text-light" %>
-  <% end %>
   <div class="container">
     <h2>Cook. Share. Love</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscin, sed do eiusmod tempor.</p>
+    <%= simple_form_for :search, url: events_path, method: "GET", html: { class: 'form-inline' } do |f| %>
+      <%= f.input :cuisine, input_html: { value: "" }, label: false, placeholder: "Chinese" %>
+      <%= f.submit "Search", class: "btn btn-primary" %>
+    <% end %>
   </div>
 </div>
 <div class="container my-5">

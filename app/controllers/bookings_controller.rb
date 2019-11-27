@@ -1,23 +1,24 @@
 class BookingsController < ApplicationController
   before_action :find_event, only: [:new, :create, :show]
 
+  def index
+    @bookings = policy_scope(Booking)
+  end
+
   def show
-    @booking = Booking.find(params[:booking_id])
-    authorize @booking
   end
 
   def new
     @booking = Booking.new
-    # authorize @booking
+    authorize @booking
   end
 
   def create
     @booking = Booking.new(booking_params)
     @booking.event = @event
     @booking.user = current_user
-
     if @booking.save
-      redirect_to event_path(@event)
+      redirect_to bookings_path
     else
       render :new
     end

@@ -1,0 +1,6 @@
+<h2>Reviews</h2>
+<% @reviews.each do |review| %>
+  <p><%= review.booking.event.title %></p>
+  <p><%= review.comment %> </p>
+  <%=  link_to "Home", events_path%>
+<% end %>
