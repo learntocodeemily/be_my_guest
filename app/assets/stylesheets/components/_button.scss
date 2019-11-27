@@ -1,0 +1,12 @@
+.btn-yellow {
+  background-color: $yellow;
+  border-radius: 4px;
+  height: 48px;
+  color: $white;
+  font-weight: 700;
+  padding: 10px 30px;
+  &:hover {
+    color: $white;
+    background-color: $orange;
+  }
+}

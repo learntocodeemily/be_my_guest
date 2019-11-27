@@ -9,4 +9,5 @@ class Event < ApplicationRecord
   validates :date, presence: true
   validates :price, presence: true
   validates :capacity, presence: true
+  validates :image, presence: true
 end
