@@ -6,12 +6,12 @@ class EventsController < ApplicationController
 
   def index
     # raise
-    @events = policy_scope(Event).order(created_at: :desc)
+    @events = policy_scope(Event)
     if params[:search].present?
       @search = params[:search][:search]
-      @events = Event.search_by_location_and_cuisine(@search)
+      @events = Event.search_by_location_and_cuisine(@search).order(created_at: :desc)
     else
-      @events = Event.all
+      @events = Event.all.order(created_at: :desc)
     end
   end
 

@@ -40,9 +40,10 @@
           </li>
         </ul>
       </div>
-
-      <%= link_to "Book", new_event_booking_path(@event.id), class: "btn btn-primary text-light" %>
-
+      <!-- a user can not book his own event -->
+      <% if current_user != @event.user %>
+        <%= link_to "Book", new_event_booking_path(@event.id), class: "btn btn-primary text-light" %>
+      <% end %>
     </div>
 
     <div class="col-sm-12 col-md-8">

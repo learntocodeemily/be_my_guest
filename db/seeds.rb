@@ -94,16 +94,16 @@ e5 = Event.create!(title: "Crawfish Boil
                    capacity: rand(3..10),
                    remote_image_url: "https://res.cloudinary.com/fangb/image/upload/v1574754345/bemyguest/wpid9068-HitherandThither_AshleyMuirBruhn-12_x1rxkg.jpg", user: u4)
 
-Booking.create!(payment: true, user: u4, event: e5 )
-Booking.create!(payment: true, user: u3, event: e4 )
-Booking.create!(payment: true, user: u2, event: e2 )
+b1 = Booking.create!(payment: true, user: u4, event: e5 )
+b2 = Booking.create!(payment: true, user: u3, event: e4 )
+b3 = Booking.create!(payment: true, user: u2, event: e2 )
 
 Review.create!(comment: Faker::Lorem.sentences,
-               rating: rand(1..5), user: u4, booking: e5)
+               rating: rand(1..5), user: u4, booking: b1)
 Review.create!(comment: Faker::Lorem.sentences,
-               rating: rand(1..5), user: u4, booking: e5)
+               rating: rand(1..5), user: u4, booking: b2)
 Review.create!(comment: Faker::Lorem.sentences,
-               rating: rand(1..5), user: u4, booking: e5)
+               rating: rand(1..5), user: u4, booking: b3)
 
 puts "Created #{Event.count} events"
 puts "Created #{User.count} users"
