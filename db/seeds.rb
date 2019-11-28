@@ -101,9 +101,10 @@ b3 = Booking.create!(payment: true, user: u2, event: e2 )
 Review.create!(comment: Faker::Lorem.sentences,
                rating: rand(1..5), user: u4, booking: b1)
 Review.create!(comment: Faker::Lorem.sentences,
-               rating: rand(1..5), user: u4, booking: b1)
-Review.create!(comment: Faker::Lorem.sentences,
                rating: rand(1..5), user: u4, booking: b2)
+Review.create!(comment: Faker::Lorem.sentences,
+               rating: rand(1..5), user: u4, booking: b3)
+
 
 puts "Created #{Event.count} events"
 puts "Created #{User.count} users"

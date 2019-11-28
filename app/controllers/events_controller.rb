@@ -5,19 +5,20 @@ class EventsController < ApplicationController
 
 
   def index
+
+    # raise
     @events = policy_scope(Event).geocoded
-    # @events = Event.all
-    @search = params[:search]
-    if @search.present?
-      @cuisine = @search["cuisine"]
-      @events = Event.where(cuisine: @cuisine)
+    if params[:search].present?
+      @search = params[:search][:search]
+      @events = Event.search_by_location_and_cuisine(@search).order(created_at: :desc)
+    else
+      @events = Event.all.order(created_at: :desc)
     end
 
   end
 
 
   def show
-
     @markers =
     [{
        lat: @event.latitude,

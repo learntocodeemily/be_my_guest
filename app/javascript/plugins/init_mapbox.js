@@ -1,4 +1,5 @@
 
+
 import mapboxgl from 'mapbox-gl';
 
 const mapElement = document.getElementById('map');
@@ -21,6 +22,7 @@ const addMarkersToMap = (map, markers) => {
       .addTo(map);
   });
 };
+
 
 const fitMapToMarkers = (map, markers) => {
   const bounds = new mapboxgl.LngLatBounds();
