@@ -13,20 +13,20 @@ class EventsController < ApplicationController
       @events = Event.where(cuisine: @cuisine)
     end
 
-    @markers = @events.map do |event|
-      {
-        lat: event.latitude,
-        lng: event.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { event: event })
-      }
-    end
-
   end
 
 
   def show
 
+    @markers =
+    [{
+       lat: @event.latitude,
+       lng: @event.longitude,
+       infoWindow: render_to_string(partial: "info_window", locals: { event: @event })
+    }]
   end
+
+
 
   def new
     @event = Event.new
