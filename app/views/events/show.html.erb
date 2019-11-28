@@ -21,24 +21,24 @@
       <div class="mb-4">
         <ul class="list-unstyled">
           <li>
-            <i class="fas fa-map-marker-alt"></i>
+            <%= image_tag "map-marker.svg", class: "mb-2 mr-1" %>
             <%= @event.location %>
           </li>
           <li>
-            <i class="fas fa-clock"></i>
+            <%= image_tag "time.svg", class: "mb-2 mr-1" %>
             <%= @event.date.strftime("%b %e, %l:%M %p") %>
           </li>
           <li>
-            <i class="fas fa-user-friends"></i>
+            <%= image_tag "user.svg", class: "mb-2 mr-1" %>
             <%= @event.capacity %>
           </li>
           <li>
-            <i class="fas fa-yen-sign"></i>
+            <%= image_tag "dollar.svg", class: "mb-2 mr-1" %>
             <%= @event.price%>
           </li>
         </ul>
       </div>
-      
+
       <!-- a user can not book his own event -->
       <% if current_user != @event.user %>
         <%= link_to "Book", new_event_booking_path(@event.id), class: "btn btn-primary text-light" %>
