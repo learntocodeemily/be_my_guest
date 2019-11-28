@@ -76,6 +76,7 @@ e2 = Event.create!(title: "Rustic BBQ dinner" ,
                    remote_image_url: "https://res.cloudinary.com/fangb/image/upload/v1574751981/bemyguest/Anderson_Wolf_Chanterelle_Photography_andersonwolfrehearsal1074web_low_bmorbs.jpg", user: u2)
 
 
+
 e3 = Event.create!(title: "Chilli Cook Off" ,
                    location: "Putuo District, Shanghai",
                    date: Faker::Date.between(from: 1.month.ago, to: 1.month.from_now),
@@ -87,19 +88,23 @@ e3 = Event.create!(title: "Chilli Cook Off" ,
 
 
 
+
 e4 = Event.create!(title: "Dumpling Dinner" ,
                    location: "Minghang District, Shanghai",
                    date: Faker::Date.between(from: 1.month.ago, to: 1.month.from_now),
                    description: Faker::Restaurant.description,
+
                    cuisine: "Shanghainese",
                    price: [50,100,150,200].sample,
                    capacity: rand(3..10),
                    remote_image_url: "https://res.cloudinary.com/fangb/image/upload/v1574751981/bemyguest/6940302078_7a555dee8c_o_weu8hr.jpg", user: u3)
 
+
 e5 = Event.create!(title: "Sushi Party" ,
                    location: "Minghang District, Shanghai",
                    date: Faker::Date.between(from: 1.month.ago, to: 1.month.from_now),
                    description: Faker::Restaurant.description,
+
                    cuisine: "Japanese",
                    price: [50,100,150,200].sample,
                    capacity: rand(3..10),
@@ -119,12 +124,14 @@ b1 = Booking.create!(payment: true, user: u4, event: e5 )
 b2 = Booking.create!(payment: true, user: u3, event: e4 )
 b3 = Booking.create!(payment: true, user: u2, event: e2 )
 
+
 Review.create!(comment: Faker::Restaurant.review,
                rating: rand(1..5), user: u4, booking: b1)
 Review.create!(comment: Faker::Restaurant.review,
                rating: rand(1..5), user: u4, booking: b2)
 Review.create!(comment: Faker::Restaurant.review,
                rating: rand(1..5), user: u4, booking: b3)
+
 
 puts "Created #{Event.count} events"
 puts "Created #{User.count} users"

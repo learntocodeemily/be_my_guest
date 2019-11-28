@@ -1,32 +1,90 @@
-<h2>My Events</h2>
-<p>You have <%=@events.count %> events</p>
-<% @events.each do |event| %>
-  <div class="col-sm-12 col-md-6 col-lg-4">
-    <div class="card my-3">
-      <div class="card-img-top" style="background-image: url('<%= cl_image_path event.image %>')"></div>
-      <div class="card-body">
-        <h5>
-          <%= link_to event.title, event_path(event.id)%>
-        </h5>
-        <p><%= event.location %></p>
-        <p><%= event.user.first_name %></p>
+<div class="container my-5">
+  <div class="row">
+    <!-- User Profile -->
+    <div class="col-sm-12 col-md-12 col-lg-4">
+      <div class="card px-5 py-4">
+        <div class="text-center">
+          <%= image_tag "seb.png", class: "avatar-large my-3" %>
+          <!-- TODO (huifang): Replace user name with data -->
+          <h4>Sébastien Saunier</h4>
+          <hr class="my-3">
+        </div>
+        <div>
+          <!-- TODO: Replace with data from the database -->
+          <div class="d-flex justify-content-between">
+            <h6>Diet</h6>
+            <p>Vegetarian</p>
+          </div>
+          <div class="d-flex justify-content-between">
+            <h6>Cuisine</h6>
+            <p>French</p>
+          </div>
+          <div class="d-flex justify-content-between">
+            <h6>Location</h6>
+            <p>Shanghai</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
-<h2>My BOOKINGS</h2>
-<p>You have <%=@bookings.count %> events</p>
-<% @bookings.each do |booking| %>
-  <div class="col-sm-12 col-md-6 col-lg-4">
-    <div class="card my-3">
-      <div class="card-img-top" style="background-image: url('<%= cl_image_path booking.event.image %>')"></div>
-      <div class="card-body">
-        <h5>
-          <%= link_to booking.event.title, event_path(booking.event.id)%>
-        </h5>
-        <p><%= booking.event.location %></p>
-        <p><%= booking.event.user.first_name %></p>
+
+    <div class="col-sm-12 col-md-12 col-lg-8">
+
+      <!-- navigation -->
+      <ul class="nav border-bottom mb-4" id="myTab" role="tablist">
+        <li class="nav-item pr-3">
+          <a class="nav-link active pb-3" id="hosting-tab" data-toggle="tab" href="#hosting" role="tab" >Hosting</a>
+        </li>
+        <li class="nav-item pr-3">
+          <a class="nav-link pb-3" id="attending-tab" data-toggle="tab" href="#attending" role="tab" >Attending</a>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="hosting" role="tabpanel" aria-labelledby="hosting-tab">
+          <!-- Hosting -->
+          <p>You are hosting <%=@events.count %> events</p>
+          <div class="row">
+            <% @events.each do |event| %>
+              <div class="col-sm-12 col-md-6">
+                <div class="card my-3">
+                  <div class="card-img-top" style="background-image: url('<%= cl_image_path event.image %>')"></div>
+                  <div class="card-body">
+                    <h5>
+                      <%= link_to event.title, event_path(event.id)%>
+                    </h5>
+                    <p class="annotation"><%= event.location %></p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="attending" role="tabpanel" aria-labelledby="attending-tab">
+          <!-- Attending -->
+          <p>You are attending <%=@bookings.count %> events</p>
+          <div class="row">
+            <% @bookings.each do |booking| %>
+              <div class="col-sm-12 col-md-6">
+                <div class="card my-3">
+                  <div class="card-img-top" style="background-image: url('<%= cl_image_path booking.event.image %>')"></div>
+                  <div class="card-body">
+                    <h5>
+                      <%= link_to booking.event.title, event_path(booking.event.id)%>
+                    </h5>
+                    <p class="annotation"><%= booking.event.location %></p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
       </div>
+
     </div>
   </div>
-<% end %>
+
+</div>
+
+

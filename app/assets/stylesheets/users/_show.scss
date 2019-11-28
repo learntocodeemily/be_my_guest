@@ -1,0 +1,17 @@
+.nav {
+  a {
+    color: $black;
+    font-size: 18px;
+  }
+  .nav-link {
+    &:hover {
+      border-bottom: 3px solid $light-gray;
+    }
+  }
+  .nav-link.active {
+    border-bottom: 3px solid $orange;
+    font-weight: bold;
+  }
+}
+
+

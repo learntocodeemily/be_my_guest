@@ -2,7 +2,6 @@
   <!-- Basic info about the event -->
   <div class="row">
     <div class="col-sm-12 col-md-4">
-
       <h4 class="text-uppercase text-primary"><%=@event.cuisine%></h4>
       <h2 class="mb-3"><%= @event.title %></h2>
       <div class="mb-4">
@@ -19,7 +18,6 @@
           <% end %>
         <% end %>
       </div>
-
       <div class="mb-4">
         <ul class="list-unstyled">
           <li>
@@ -40,11 +38,13 @@
           </li>
         </ul>
       </div>
-
-      <%= link_to "Book", new_event_booking_path(@event.id), class: "btn btn-primary text-light" %>
+      
+      <!-- a user can not book his own event -->
+      <% if current_user != @event.user %>
+        <%= link_to "Book", new_event_booking_path(@event.id), class: "btn btn-primary text-light" %>
+      <% end %>
 
     </div>
-
     <div class="col-sm-12 col-md-8">
       <% if @event.image.nil? %>
         <%= image_tag ("https://images.unsplash.com/photo-1557872943-16a5ac26437e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1432&q=80")%>
@@ -52,7 +52,6 @@
         <div class="card-img-large rounded" style="background-image: url('<%= cl_image_path @event.image %>')"></div>
       <% end %>
     </div>
-
   </div>
   <hr class="my-5">
   <!-- Event description -->
@@ -104,5 +103,11 @@
       </p>
     </div>
   </div>
-
 </div>
+<div
+  id="map"
+  style="width: 100%;
+  height: 600px;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+></div>
