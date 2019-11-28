@@ -6,8 +6,8 @@ class EventsController < ApplicationController
 
   def index
     @events = policy_scope(Event).order(created_at: :desc)
-    @search = params[:search][:search]
-    if @search.present?
+    if params[:search].present?
+      @search = params[:search][:search]
       @events = Event.search_by_location_and_cuisine(@search)
     else
       @events = Event.all
