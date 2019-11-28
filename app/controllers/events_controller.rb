@@ -6,11 +6,11 @@ class EventsController < ApplicationController
 
   def index
     @events = policy_scope(Event).order(created_at: :desc)
-    # @events = Event.all
-    @search = params[:search]
+    @search = params[:search][:search]
     if @search.present?
-      @cuisine = @search["cuisine"]
-      @events = Event.where(cuisine: @cuisine)
+      @events = Event.search_by_location_and_cuisine(@search)
+    else
+      @events = Event.all
     end
   end
 
@@ -28,10 +28,6 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     authorize @event
     @event.user = @user
-    if @event.image.nil?
-      @event.image = https://res.cloudinary.com/fangb/image/upload/v1574826240/bqk8ih1xicux35olyjmd.jpg
-    else
-    end
 
     if @event.save
       redirect_to @event
