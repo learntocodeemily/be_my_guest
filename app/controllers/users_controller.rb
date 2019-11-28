@@ -34,7 +34,6 @@ class UsersController < ApplicationController
   #   redirect_to user_path
   # end
 
-
   private
 
   def find_user
@@ -44,6 +43,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:avatar, :diet, :allergy)
   end
-
 
 end
