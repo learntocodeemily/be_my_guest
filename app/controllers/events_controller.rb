@@ -5,14 +5,24 @@ class EventsController < ApplicationController
 
 
   def index
-    @events = policy_scope(Event).order(created_at: :desc)
+    @events = policy_scope(Event).geocoded
     # @events = Event.all
     @search = params[:search]
     if @search.present?
       @cuisine = @search["cuisine"]
       @events = Event.where(cuisine: @cuisine)
     end
+
+    @markers = @events.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { event: event })
+      }
+    end
+
   end
+
 
   def show
 
@@ -28,10 +38,6 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     authorize @event
     @event.user = @user
-    if @event.image.nil?
-      @event.image = https://res.cloudinary.com/fangb/image/upload/v1574826240/bqk8ih1xicux35olyjmd.jpg
-    else
-    end
 
     if @event.save
       redirect_to @event

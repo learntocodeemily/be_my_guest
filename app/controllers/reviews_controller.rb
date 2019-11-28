@@ -1,7 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :find_booking, only: [:new, :create]
 
-
   def index
     @booking = policy_scope(Booking)
     @reviews = Review.all
