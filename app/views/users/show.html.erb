@@ -4,20 +4,20 @@
     <div class="col-sm-12 col-md-12 col-lg-4">
       <div class="card px-5 py-4">
         <div class="text-center">
-          <%= image_tag "seb.png", class: "avatar-large my-3" %>
+          <%= cl_image_tag @user.avatar, class: "avatar-large my-3" %>
           <!-- TODO (huifang): Replace user name with data -->
-          <h4>Sébastien Saunier</h4>
+          <h4><%= @name %></h4>
           <hr class="my-3">
         </div>
         <div>
           <!-- TODO: Replace with data from the database -->
           <div class="d-flex justify-content-between">
             <h6>Diet</h6>
-            <p>Vegetarian</p>
+            <p><%=@user.diet%></p>
           </div>
           <div class="d-flex justify-content-between">
-            <h6>Cuisine</h6>
-            <p>French</p>
+            <h6>Allergy</h6>
+            <p><%= @user.allergy %></p>
           </div>
           <div class="d-flex justify-content-between">
             <h6>Location</h6>
@@ -26,9 +26,7 @@
         </div>
       </div>
     </div>
-
     <div class="col-sm-12 col-md-12 col-lg-8">
-
       <!-- navigation -->
       <ul class="nav border-bottom mb-4" id="myTab" role="tablist">
         <li class="nav-item pr-3">
@@ -38,7 +36,6 @@
           <a class="nav-link pb-3" id="attending-tab" data-toggle="tab" href="#attending" role="tab" >Attending</a>
         </li>
       </ul>
-
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="hosting" role="tabpanel" aria-labelledby="hosting-tab">
           <!-- Hosting -->
@@ -59,7 +56,6 @@
             <% end %>
           </div>
         </div>
-
         <div class="tab-pane fade" id="attending" role="tabpanel" aria-labelledby="attending-tab">
           <!-- Attending -->
           <p>You are attending <%=@bookings.count %> events</p>
@@ -79,12 +75,10 @@
             <% end %>
           </div>
         </div>
-
       </div>
-
     </div>
   </div>
-
 </div>
-
-
+<%= link_to edit_user_path(current_user.id) do %>
+  <i class="far fa-edit"></i>
+<% end %>
