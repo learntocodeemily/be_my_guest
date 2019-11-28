@@ -19,6 +19,10 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 gem 'pundit'
 gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
+
+
+gem 'geocoder'
+
 gem 'pg_search', '~> 2.3.0'
 
 # devise
