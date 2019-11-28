@@ -6,19 +6,19 @@
       <div class="mb-4">
         <ul class="list-unstyled">
           <li>
-            <%= image_tag "map-marker.svg", class: "mb-2" %>
+            <%= image_tag "map-marker.svg", class: "mb-2 mr-1" %>
             <%= @event.location %>
           </li>
           <li>
-            <%= image_tag "time.svg", class: "mb-2" %>
+            <%= image_tag "time.svg", class: "mb-2 mr-1" %>
             <%= @event.date.strftime("%b %e, %l:%M %p") %>
           </li>
           <li>
-            <%= image_tag "user.svg", class: "mb-2" %>
+            <%= image_tag "user.svg", class: "mb-2 mr-1" %>
             <%= @event.capacity %>
           </li>
           <li>
-            <%= image_tag "dollar.svg", class: "mb-2" %>
+            <%= image_tag "dollar.svg", class: "mb-2 mr-1" %>
             <%= @event.price%>
           </li>
         </ul>
