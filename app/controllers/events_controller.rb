@@ -19,6 +19,9 @@ class EventsController < ApplicationController
 
 
   def show
+
+    @bookings = @event.bookings
+
     @markers =
     [{
        lat: @event.latitude,
