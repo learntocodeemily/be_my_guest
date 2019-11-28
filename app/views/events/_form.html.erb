@@ -2,7 +2,9 @@
   <%= f.input :title, label: "Event Title" %>
   <%= f.input :cuisine %>
   <%= f.input :location %>
-  <%= f.date_select :date %>
+
+  <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
+  <%= f.time_select :time %>
   <%= f.input :price, as: :integer %>
   <%= f.input :capacity, collection: 2..12 %>
   <%= f.input :description, as: :text  %>
@@ -14,3 +16,4 @@
     <%= f.submit "add event", class: "btn btn-ghost border-dark rounded-lg"  %>
   <% end %>
 <% end %>
+
