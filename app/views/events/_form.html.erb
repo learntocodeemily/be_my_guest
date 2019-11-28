@@ -7,13 +7,13 @@
   <%= f.time_select :time %>
   <%= f.input :price, as: :integer %>
   <%= f.input :capacity, collection: 2..12 %>
-  <%= f.input :description, as: :text  %>
+  <%= f.input :description, as: :text %>
   <%= f.input :image %>
   <%= f.input :image_cache, as: :hidden %>
-  <% if edit%>
-    <%= f.submit "edit event", class: "btn btn-ghost border-dark rounded-lg"  %>
+  <% if edit %>
+    <%= f.submit "Submit", class: "btn btn-primary text-light btn-block mb-3"  %>
   <% else %>
-    <%= f.submit "add event", class: "btn btn-ghost border-dark rounded-lg"  %>
+    <%= f.submit "Add event", class: "btn btn-primary text-light btn-block mb-3"  %>
   <% end %>
 <% end %>
 

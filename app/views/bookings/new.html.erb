@@ -1,28 +1,31 @@
 <div class="container my-5">
   <div class="row">
     <div class="col-sm-12 col-md-4">
-      <h4>Confirm booking: </h4>
-      <h2><%= @event.title %></h2>
-      <ul class="list-unstyled">
-        <li>
-          <i class="fas fa-map-marker-alt"></i>
-          <%= @event.location %>
-        </li>
-        <li>
-          <i class="fas fa-clock"></i>
-          <%= @event.date.strftime("%b %e, %l:%M %p") %>
-        </li>
-        <li>
-          <i class="fas fa-user-friends"></i>
-          <%= @event.capacity %>
-        </li>
-        <li>
-          <i class="fas fa-yen-sign"></i>
-          <%= @event.price%>
-        </li>
-      </ul>
+      <h4>You're going to: </h4>
+      <h2 class="mb-4"><%= @event.title %></h2>
+      <div class="mb-4">
+        <ul class="list-unstyled">
+          <li>
+            <%= image_tag "map-marker.svg", class: "mb-2 mr-1" %>
+            <%= @event.location %>
+          </li>
+          <li>
+            <%= image_tag "time.svg", class: "mb-2 mr-1" %>
+            <%= @event.date.strftime("%b %e, %l:%M %p") %>
+          </li>
+          <li>
+            <%= image_tag "user.svg", class: "mb-2 mr-1" %>
+            <%= @event.capacity %>
+          </li>
+          <li>
+            <%= image_tag "dollar.svg", class: "mb-2 mr-1" %>
+            <%= @event.price%>
+          </li>
+        </ul>
+      </div>
+
       <%=simple_form_for [@event, @booking] do |f| %>
-        <%= f.check_box :payment %>
+        <%= f.check_box :payment, class: "mb-3" %>
         <span>Make the payment by magic!</span>
         <%= f.hidden_field :event_id, value: params[:event] %>
         <%= f.submit "Confirm Payment", class: "btn btn-primary text-light" %>
