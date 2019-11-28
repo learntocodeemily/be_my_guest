@@ -11,86 +11,112 @@ Booking.destroy_all
 Event.destroy_all
 User.destroy_all
 
+# users = {}
+# 10.times do
+#   User.create!(email: Faker::Internet.email, password: "12345678",
+#                first_name: Faker::Name.first_name,
+#                last_name: Faker::Name.last_name,
+#                )
+# end
 
+# 10 times do
+#   Event.create!(title: "Cosy Home cooked Italian Dinner" ,
+#                 location: Faker::Address.full_address,
+#                 date: Faker::Date.between(from: 3.months.ago, to: 3.months.from_now)
+#                 description: Faker::Restaurant.description,
+#                 cuisine: Faker::Restaurant.type,
+#                 price: [50,100,150,200].sample,
+#                 capacity: rand(3..10),
+#                 remote_image_url: "https://res.cloudinary.com/fangb/image/upload/v1574751981/bemyguest/DIY_BRUSCHETTA_BAR-copy_mmq3ee.jpg", user: u1)
+# end
 
 u1 = User.create!(email: Faker::Internet.email, password: "12345678",
                   first_name: Faker::Name.first_name,
-                  last_name: Faker::Name.last_name
+                  last_name: Faker::Name.last_name,
+                  remote_avatar_url: "https://source.unsplash.com/featured/?{people}"
                   )
-
-e6 = Event.create!(title: "Cosy Home cooked Italian Dinner" ,
-                   location: "lane 688 puming road pudong shanghai",
-                   date: Date.today,
-                   description: Faker::Lorem.sentences,
-                   cuisine: "italian",
-                   price: 50,
-                   capacity: rand(3..10),
-                   remote_image_url: "https://res.cloudinary.com/fangb/image/upload/v1574751981/bemyguest/DIY_BRUSCHETTA_BAR-copy_mmq3ee.jpg", user: u1)
-
 
 u2 = User.create!(email: Faker::Internet.email, password: "12345678",
                   first_name: Faker::Name.first_name,
-                  last_name: Faker::Name.last_name
+                  last_name: Faker::Name.last_name,
+                  remote_avatar_url: "https://source.unsplash.com/featured/?{people}"
                   )
 
 u3 = User.create!(email: Faker::Internet.email, password: "12345678",
                   first_name: Faker::Name.first_name,
-                  last_name: Faker::Name.last_name
+                  last_name: Faker::Name.last_name,
+                  remote_avatar_url: "https://source.unsplash.com/featured/?{people}"
                   )
 
 u4 = User.create!(email: Faker::Internet.email, password: "12345678",
                   first_name: Faker::Name.first_name,
-                  last_name: Faker::Name.last_name
+                  last_name: Faker::Name.last_name,
+                  remote_avatar_url: "https://source.unsplash.com/featured/?{people}"
                   )
 
-e1 = Event.create!(title: "Rustic BBQ dinner" ,
+e1 = Event.create!(title: "Cosy Home Cooked Italian Dinner" ,
+                   location: "Pudong New District, Shanghai",
+                   date: Faker::Date.between(from: 1.month.ago, to: 1.month.from_now),
+                   description: Faker::Restaurant.description,
+                   cuisine: "italian",
+                   price: [50,100,150,200].sample,
+                   capacity: rand(3..10),
+                   remote_image_url: "https://res.cloudinary.com/fangb/image/upload/v1574751981/bemyguest/DIY_BRUSCHETTA_BAR-copy_mmq3ee.jpg", user: u1
+                   )
+
+
+
+e2 = Event.create!(title: "Rustic BBQ dinner" ,
                    location: "JingAn District, Shanghai",
-                   date: Date.today,
-                   description: Faker::Lorem.sentences,
+                   date: Faker::Date.between(from: 1.month.ago, to: 1.month.from_now),
+                   description: Faker::Restaurant.description,
                    cuisine: "Australian",
-                   price: 80,
+                   price: [50,100,150,200].sample,
                    capacity: rand(3..10),
                    remote_image_url: "https://res.cloudinary.com/fangb/image/upload/v1574751981/bemyguest/Anderson_Wolf_Chanterelle_Photography_andersonwolfrehearsal1074web_low_bmorbs.jpg", user: u2)
 
 
-e2 = Event.create!(title: "Chilli Cook
-  Off" ,
-                   location: "28 Caoxi N Rd, Xujiahui, Xuhui, Shanghai, China",
-                   date: Date.today,
-                   description: Faker::Lorem.sentences,
+
+e3 = Event.create!(title: "Chilli Cook Off" ,
+                   location: "Putuo District, Shanghai",
+                   date: Faker::Date.between(from: 1.month.ago, to: 1.month.from_now),
+                   description: Faker::Restaurant.description,
                    cuisine: "Sichuan",
-                   price: 100,
+                   price: [50,100,150,200].sample,
                    capacity: rand(3..10),
                    remote_image_url: "https://res.cloudinary.com/fangb/image/upload/v1574751981/bemyguest/Chili_Cook-Off_Guide_-_The_Midwestival_ib6j9b.jpg", user: u2)
 
 
 
-e3 = Event.create!(title: "Dumpling Dinner" ,
-                   location: "Kangding Rd, Jing'an, Shanghai, China",
-                   date: Date.today,
-                   description: Faker::Lorem.sentences,
+
+e4 = Event.create!(title: "Dumpling Dinner" ,
+                   location: "Minghang District, Shanghai",
+                   date: Faker::Date.between(from: 1.month.ago, to: 1.month.from_now),
+                   description: Faker::Restaurant.description,
+
                    cuisine: "Shanghainese",
-                   price: 20,
+                   price: [50,100,150,200].sample,
                    capacity: rand(3..10),
                    remote_image_url: "https://res.cloudinary.com/fangb/image/upload/v1574751981/bemyguest/6940302078_7a555dee8c_o_weu8hr.jpg", user: u3)
 
-e4 = Event.create!(title: "Sushi Party" ,
-                   location: " Da Pu Qiao, Lu Wan Qu, Shanghai, China",
-                   date: Date.today,
-                   description: Faker::Lorem.sentences,
+
+e5 = Event.create!(title: "Sushi Party" ,
+                   location: "Minghang District, Shanghai",
+                   date: Faker::Date.between(from: 1.month.ago, to: 1.month.from_now),
+                   description: Faker::Restaurant.description,
+
                    cuisine: "Japanese",
-                   price: 45,
+                   price: [50,100,150,200].sample,
                    capacity: rand(3..10),
                    remote_image_url: "https://res.cloudinary.com/fangb/image/upload/v1574754171/bemyguest/6a00d8342114db53ef01a3fcf9d523970b_tgyy5g.png", user: u3)
 
 
-e5 = Event.create!(title: "Crawfish Boil
-  Party" ,
-                   location: "Yan'an W Rd, Changning, Shanghai, China",
-                   date: Date.today,
-                   description: Faker::Lorem.sentences,
+e6 = Event.create!(title: "Crawfish Boil Party" ,
+                   location: "JingAn District, Shanghai",
+                   date: Faker::Date.between(from: 1.month.ago, to: 1.month.from_now),
+                   description: Faker::Restaurant.description,
                    cuisine: "American",
-                   price: 99,
+                   price: [50,100,150,200].sample,
                    capacity: rand(3..10),
                    remote_image_url: "https://res.cloudinary.com/fangb/image/upload/v1574754345/bemyguest/wpid9068-HitherandThither_AshleyMuirBruhn-12_x1rxkg.jpg", user: u4)
 
@@ -98,11 +124,12 @@ b1 = Booking.create!(payment: true, user: u4, event: e5 )
 b2 = Booking.create!(payment: true, user: u3, event: e4 )
 b3 = Booking.create!(payment: true, user: u2, event: e2 )
 
-Review.create!(comment: Faker::Lorem.sentences,
+
+Review.create!(comment: Faker::Restaurant.review,
                rating: rand(1..5), user: u4, booking: b1)
-Review.create!(comment: Faker::Lorem.sentences,
+Review.create!(comment: Faker::Restaurant.review,
                rating: rand(1..5), user: u4, booking: b2)
-Review.create!(comment: Faker::Lorem.sentences,
+Review.create!(comment: Faker::Restaurant.review,
                rating: rand(1..5), user: u4, booking: b3)
 
 
