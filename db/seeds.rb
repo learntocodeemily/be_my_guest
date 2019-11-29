@@ -52,6 +52,52 @@ u7 = User.create!(email: Faker::Internet.email, password: "12345678",
                   last_name: Faker::Name.last_name,
                   remote_avatar_url: "https://source.unsplash.com/featured/200x200/?{people}"
                   )
+u8 = User.create!(email: Faker::Internet.email, password: "12345678",
+                  first_name: Faker::Name.first_name,
+                  last_name: Faker::Name.last_name,
+                  remote_avatar_url: "https://source.unsplash.com/featured/200x200/?{people}"
+                  )
+
+u9 = User.create!(email: Faker::Internet.email, password: "12345678",
+                  first_name: Faker::Name.first_name,
+                  last_name: Faker::Name.last_name,
+                  remote_avatar_url: "https://source.unsplash.com/featured/200x200/?{people}"
+                  )
+
+u10 = User.create!(email: Faker::Internet.email, password: "12345678",
+                   first_name: Faker::Name.first_name,
+                   last_name: Faker::Name.last_name,
+                   remote_avatar_url: "https://source.unsplash.com/featured/200x200/?{people}"
+                   )
+
+u11 = User.create!(email: Faker::Internet.email, password: "12345678",
+                   first_name: Faker::Name.first_name,
+                   last_name: Faker::Name.last_name,
+                   remote_avatar_url: "https://source.unsplash.com/featured/200x200/?{people}"
+                   )
+
+u12 = User.create!(email: Faker::Internet.email, password: "12345678",
+                   first_name: Faker::Name.first_name,
+                   last_name: Faker::Name.last_name,
+                   remote_avatar_url: "https://source.unsplash.com/featured/200x200/?{people}"
+                   )
+
+u13 = User.create!(email: Faker::Internet.email, password: "12345678",
+                   first_name: Faker::Name.first_name,
+                   last_name: Faker::Name.last_name,
+                   remote_avatar_url: "https://source.unsplash.com/featured/200x200/?{people}"
+                   )
+
+u14 = User.create!(email: Faker::Internet.email, password: "12345678",
+                   first_name: Faker::Name.first_name,
+                   last_name: Faker::Name.last_name,
+                   remote_avatar_url: "https://source.unsplash.com/featured/200x200/?{people}"
+                   )
+u15 = User.create!(email: Faker::Internet.email, password: "12345678",
+                   first_name: Faker::Name.first_name,
+                   last_name: Faker::Name.last_name,
+                   remote_avatar_url: "https://source.unsplash.com/featured/200x200/?{people}"
+                   )
 
 e1 = Event.create!(title: "Cosy Home Cooked Italian Dinner" ,
                    location: "Pudong New District, Shanghai",
@@ -123,52 +169,77 @@ e6 = Event.create!(title: "Crawfish Boil Party" ,
                    user: u4
                    )
 
-b1 = Booking.create!(payment: true, user: u1, event: e5 )
-b2 = Booking.create!(payment: true, user: u2, event: e4 )
-b3 = Booking.create!(payment: true, user: u4, event: e2 )
-b4 = Booking.create!(payment: true, user: u4, event: e5 )
-b5 = Booking.create!(payment: true, user: u4, event: e4 )
+b1 = Booking.create!(payment: true, user: u6, event: e1 )
+b2 = Booking.create!(payment: true, user: u15, event: e1 )
+b3 = Booking.create!(payment: true, user: u14, event: e1 )
+b4 = Booking.create!(payment: true, user: u1, event: e2 )
+b5 = Booking.create!(payment: true, user: u2, event: e2 )
 b6 = Booking.create!(payment: true, user: u4, event: e2 )
-b7 = Booking.create!(payment: true, user: u4, event: e5 )
-b8 = Booking.create!(payment: true, user: u3, event: e4 )
-b9 = Booking.create!(payment: true, user: u2, event: e2 )
-b10 = Booking.create!(payment: true, user: u6, event: e5 )
-b11 = Booking.create!(payment: true, user: u3, event: e4 )
-b12 = Booking.create!(payment: true, user: u7, event: e2 )
-b13 = Booking.create!(payment: true, user: u4, event: e5 )
-b14 = Booking.create!(payment: true, user: u3, event: e4 )
-b15 = Booking.create!(payment: true, user: u3, event: e2 )
+b7 = Booking.create!(payment: true, user: u5, event: e2 )
+b8 = Booking.create!(payment: true, user: u6, event: e2 )
+b9 = Booking.create!(payment: true, user: u3, event: e3 )
+b10 = Booking.create!(payment: true, user: u10, event: e3 )
+b11 = Booking.create!(payment: true, user: u11, event: e3 )
+b12 = Booking.create!(payment: true, user: u12, event: e3 )
+b13 = Booking.create!(payment: true, user: u9, event: e4 )
+b14 = Booking.create!(payment: true, user: u8, event: e4 )
+b15 = Booking.create!(payment: true, user: u4, event: e4 )
+b16 = Booking.create!(payment: true, user: u3, event: e4 )
+b17 = Booking.create!(payment: true, user: u7, event: e4 )
+b18 = Booking.create!(payment: true, user: u4, event: e5 )
+b19 = Booking.create!(payment: true, user: u15, event: e5 )
+b20 = Booking.create!(payment: true, user: u14, event: e5 )
+b21 = Booking.create!(payment: true, user: u3, event: e5 )
+b22 = Booking.create!(payment: true, user: u4, event: e6 )
+b23 = Booking.create!(payment: true, user: u10, event: e6 )
 
 Review.create!(comment: Faker::Restaurant.review,
-               rating: rand(1..5), user: u1, booking: b1)
+               rating: rand(1..5), user: u6, booking: b1)
 Review.create!(comment: Faker::Restaurant.review,
-               rating: rand(1..5), user: u2, booking: b2)
+               rating: rand(1..5), user: u15, booking: b2)
 Review.create!(comment: Faker::Restaurant.review,
-               rating: rand(1..5), user: u4, booking: b3)
+               rating: rand(1..5), user: u14, booking: b3)
 Review.create!(comment: Faker::Restaurant.review,
-               rating: rand(1..5), user: u4, booking: b4)
+               rating: rand(1..5), user: u1, booking: b4)
 Review.create!(comment: Faker::Restaurant.review,
-               rating: rand(1..5), user: u4, booking: b5)
+               rating: rand(1..5), user: u2, booking: b5)
 Review.create!(comment: Faker::Restaurant.review,
                rating: rand(1..5), user: u4, booking: b6)
 Review.create!(comment: Faker::Restaurant.review,
-               rating: rand(1..5), user: u4, booking: b7)
+               rating: rand(1..5), user: u5, booking: b7)
 Review.create!(comment: Faker::Restaurant.review,
-               rating: rand(1..5), user: u3, booking: b8)
+               rating: rand(1..5), user: u6, booking: b8)
 Review.create!(comment: Faker::Restaurant.review,
-               rating: rand(1..5), user: u2, booking: b9)
+               rating: rand(1..5), user: u3, booking: b9)
 Review.create!(comment: Faker::Restaurant.review,
-               rating: rand(1..5), user: u6, booking: b10)
+               rating: rand(1..5), user: u10, booking: b10)
 Review.create!(comment: Faker::Restaurant.review,
-               rating: rand(1..5), user: u3, booking: b11)
+               rating: rand(1..5), user: u11, booking: b11)
 Review.create!(comment: Faker::Restaurant.review,
-               rating: rand(1..5), user: u7, booking: b12)
+               rating: rand(1..5), user: u12, booking: b12)
 Review.create!(comment: Faker::Restaurant.review,
-               rating: rand(1..5), user: u4, booking: b13)
+               rating: rand(1..5), user: u9, booking: b13)
 Review.create!(comment: Faker::Restaurant.review,
-               rating: rand(1..5), user: u3, booking: b14)
+               rating: rand(1..5), user: u8, booking: b14)
 Review.create!(comment: Faker::Restaurant.review,
-               rating: rand(1..5), user: u3, booking: b15)
+               rating: rand(1..5), user: u4, booking: b15)
+Review.create!(comment: Faker::Restaurant.review,
+               rating: rand(1..5), user: u3, booking: b16)
+Review.create!(comment: Faker::Restaurant.review,
+               rating: rand(1..5), user: u7, booking: b17)
+Review.create!(comment: Faker::Restaurant.review,
+               rating: rand(1..5), user: u4, booking: b18)
+Review.create!(comment: Faker::Restaurant.review,
+               rating: rand(1..5), user: u15, booking: b19)
+Review.create!(comment: Faker::Restaurant.review,
+               rating: rand(1..5), user: u14, booking: b20)
+Review.create!(comment: Faker::Restaurant.review,
+               rating: rand(1..5), user: u3, booking: b21)
+Review.create!(comment: Faker::Restaurant.review,
+               rating: rand(1..5), user: u4, booking: b22)
+Review.create!(comment: Faker::Restaurant.review,
+               rating: rand(1..5), user: u10, booking: b23)
+
 puts "Created #{Event.count} events"
 puts "Created #{User.count} users"
 puts "Created #{Booking.count} booking"
