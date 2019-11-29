@@ -66,28 +66,30 @@
     </div>
   </div>
   <hr class="my-5">
+
   <!-- Participants -->
-  <!-- TODO (huifang): Bookings to be seeded -->
   <div class="row">
     <div class="col-sm-12 col-md-4">
       <h4>Participants</h4>
     </div>
     <div class="col-sm-12 col-md-8">
-      <% @bookings.each do |booking| %>
-        <div class="col-sm-12 col-md-6 col-lg-4">
-          <div class="card my-3">
-            <div class="card-img-top" style="background-image: url('<%= cl_image_path booking.event.image %>')"></div>
-            <div class="card-body">
-              <p><%= booking.user.first_name %></p>
-            </div>
+      <div class="d-flex">
+        <% @bookings.each do |booking| %>
+          <div class="mr-4 text-center">
+            <% if booking.user.avatar? %>
+              <%= cl_image_tag booking.user.avatar, class: "avatar-medium my-2" %>
+            <% else%>
+              <%= image_tag 'seb.png', class: "avatar-medium my-2" %>
+            <% end %>
+            <p><%= booking.user.first_name %></p>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
   <hr class="my-5">
+
   <!-- Reviews -->
-  <!-- TODO (huifang): Reviews to be seeded -->
   <div class="row">
     <div class="col-sm-12 col-md-4">
       <h4>Reviews</h4>
@@ -98,9 +100,9 @@
       <i class="far fa-star"></i>
     </div>
     <div class="col-sm-12 col-md-8">
-      <p>
-        Reviews to be seeded!
-      </p>
+      <% @event.reviews.each do |review| %>
+        <p><%= review.comment %></p>
+      <% end %>
     </div>
   </div>
 </div>
