@@ -2,87 +2,21 @@
   <div class="row">
     <!-- User Profile -->
     <div class="col-sm-12 col-md-12 col-lg-4">
-      <div class="card px-5 py-4">
-        <div class="text-center">
-          <% if current_user.avatar? %>
-            <%= cl_image_tag @user.avatar, class: "avatar-large my-3" %>
-          <% else%>
-            <%= image_tag 'seb.png', class: "avatar-large my-3" %>
-          <% end %>
-          <!-- TODO (huifang): Replace user name with data -->
-          <h4><%= @name %></h4>
-          <hr class="my-3">
-        </div>
-        <div>
-          <!-- Note: changed static info to db info-->
-          <div class="d-flex justify-content-between">
-            <h6>Diet</h6>
-            <p><%=@user.diet%></p>
-          </div>
-          <div class="d-flex justify-content-between">
-            <h6>Allergy</h6>
-            <p><%= @user.allergy %></p>
-          </div>
-          <div class="d-flex justify-content-between">
-            <h6>Location</h6>
-            <p>Shanghai</p>
-          </div>
-        </div>
-      </div>
+      <%= render 'avatar' %>
     </div>
     <div class="col-sm-12 col-md-12 col-lg-8">
       <!-- navigation -->
-      <ul class="nav border-bottom mb-4" id="myTab" role="tablist">
-        <li class="nav-item pr-3">
-          <a class="nav-link active pb-3" id="hosting-tab" data-toggle="tab" href="#hosting" role="tab" >Hosting</a>
-        </li>
-        <li class="nav-item pr-3">
-          <a class="nav-link pb-3" id="attending-tab" data-toggle="tab" href="#attending" role="tab" >Attending</a>
-        </li>
-      </ul>
+      <%= render 'sub_nav_bar' %>
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="hosting" role="tabpanel" aria-labelledby="hosting-tab">
           <!-- Hosting -->
-          <p>You are hosting <%=@events.count %> events</p>
-          <div class="row">
-            <% @events.each do |event| %>
-              <div class="col-sm-12 col-md-6">
-                <div class="card my-3">
-                  <div class="card-img-top" style="background-image: url('<%= cl_image_path event.image %>')"></div>
-                  <div class="card-body">
-                    <h5>
-                      <%= link_to event.title, event_path(event.id)%>
-                    </h5>
-                    <p class="annotation"><%= event.location %></p>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-          </div>
+          <%= render 'hosting_events_info' %>
         </div>
         <div class="tab-pane fade" id="attending" role="tabpanel" aria-labelledby="attending-tab">
           <!-- Attending -->
-          <p>You are attending <%=@bookings.count %> events</p>
-          <div class="row">
-            <% @bookings.each do |booking| %>
-              <div class="col-sm-12 col-md-6">
-                <div class="card my-3">
-                  <div class="card-img-top" style="background-image: url('<%= cl_image_path booking.event.image %>')"></div>
-                  <div class="card-body">
-                    <h5>
-                      <%= link_to booking.event.title, event_path(booking.event.id)%>
-                    </h5>
-                    <p class="annotation"><%= booking.event.location %></p>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-          </div>
+          <%= render 'attending_events' %>
         </div>
       </div>
     </div>
   </div>
 </div>
-<%= link_to edit_user_registration_path do %>
-  <i class="far fa-edit"></i>
-<% end %>
