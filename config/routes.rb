@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :users
   root to: "events#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :events do
@@ -13,4 +12,8 @@ Rails.application.routes.draw do
     resources :reviews, only: [ :new, :create]
   end
   resources :reviews, only: [ :index, :edit, :update, :destroy]
+  resources :users, only: :show
+
+  match 'user_root' => 'users#show', via: :get
+
 end

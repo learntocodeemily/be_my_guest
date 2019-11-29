@@ -12,7 +12,11 @@
           <%= link_to "Host an event", new_event_path, class: "btn btn-white text-primary mx-3" %>
           <li class="nav-item dropdown">
             <!-- change avatar photo to user avatar -->
-            <%= cl_image_tag current_user.avatar, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% if current_user.avatar? %>
+              <%= cl_image_tag current_user.avatar, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% else%>
+              <%= image_tag 'seb.png' , class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% end %>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <%= link_to "Dashboard", user_path(current_user.id), class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
