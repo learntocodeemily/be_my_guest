@@ -5,6 +5,7 @@ class Event < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_location?
 
   has_many :bookings
+  has_many :reviews, through: :bookings
 
   validates :title, presence: true
   validates :location, presence: true
