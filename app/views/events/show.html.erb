@@ -38,12 +38,10 @@
           </li>
         </ul>
       </div>
-
       <!-- a user can not book his own event -->
       <% if current_user != @event.user %>
         <%= link_to "Book", new_event_booking_path(@event.id), class: "btn btn-primary text-light" %>
       <% end %>
-
     </div>
     <div class="col-sm-12 col-md-8">
       <% if @event.image.nil? %>
@@ -85,6 +83,12 @@
       <% end %>
     </div>
   </div>
+  <h3>Similar Events To This</h3>
+  <ul>
+    <% @similar_events.each do |e| %>
+      <li><%= e.title %></li>
+    <% end %>
+  </ul>
   <hr class="my-5">
   <!-- Reviews -->
   <!-- TODO (huifang): Reviews to be seeded -->

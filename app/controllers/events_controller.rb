@@ -21,7 +21,7 @@ class EventsController < ApplicationController
   def show
 
     @bookings = @event.bookings
-
+    @similar_events = @event.find_related_tags
     @markers =
     [{
        lat: @event.latitude,
@@ -29,7 +29,6 @@ class EventsController < ApplicationController
        infoWindow: render_to_string(partial: "info_window", locals: { event: @event })
     }]
   end
-
 
 
   def new
@@ -47,6 +46,14 @@ class EventsController < ApplicationController
       redirect_to @event
     else
       render :new
+    end
+  end
+
+  def tagged
+    if params[:tag].present?
+      @events = Event.tagged_with(params[:tag])
+    else
+      @events = Event.all
     end
   end
 
@@ -78,7 +85,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :date, :description, :cuisine, :price, :location, :image, :capacity, :user_id)
+    params.require(:event).permit(:title, :date, :description, :cuisine, :price, :location, :image, :capacity, :user_id,:tag_list)
   end
 
 end
