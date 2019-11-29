@@ -7,6 +7,7 @@ class Event < ApplicationRecord
   acts_as_taggable_on :tags
 
   has_many :bookings
+  has_many :reviews, through: :bookings
 
   validates :title, presence: true
   validates :location, presence: true

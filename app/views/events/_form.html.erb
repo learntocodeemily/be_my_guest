@@ -3,7 +3,7 @@
   <%= f.input :cuisine %>
   <%= f.input :location %>
   <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
-  <%= f.time_select :time %>
+  <%= f.time_select :time, as: :time %>
   <%= f.input :price, as: :integer %>
   <%= f.input :capacity, collection: 2..12 %>
   <%= f.input :description, as: :text %>

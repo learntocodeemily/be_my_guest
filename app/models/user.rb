@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :events
   has_many :reviews
   has_many :bookings
+  attribute :diet, :string, default: 'none'
+  attribute :allergy, :string, default: 'none'
 
   validates :first_name, presence: true
   validates :last_name, presence: true

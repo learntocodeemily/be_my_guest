@@ -1,2 +1,8 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h1>User Profile</h1>
+<%=simple_form_for @user do |f| %>
+  <%= f.input :diet, label: "Dietary Preferences" %>
+  <%= f.input :allergy, as: :text %>
+  <%= f.input :avatar %>
+  <%= f.input :avatar_cache, as: :hidden %>
+  <%= f.submit "Submit", class: "btn btn-primary text-light btn-block mb-3"  %>
+<% end %>
