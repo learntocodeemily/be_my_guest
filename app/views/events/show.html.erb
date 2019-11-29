@@ -102,36 +102,56 @@
     </div>
   </div>
 
-  <hr class="my-5">
 
   <!-- Reviews -->
-  <div class="row">
-    <div class="col-sm-12 col-md-4">
-      <h4>Reviews</h4>
-      <!-- Calculate average -->
-      <div class="avg-rating">
-        <% sum = 0 %>
+  <% if @event.reviews.length != 0 %>
+    <hr class="my-5">
+    <div class="row">
+      <div class="col-sm-12 col-md-4">
+        <h4>Reviews</h4>
+        <!-- Calculate average -->
+        <div class="avg-rating">
+          <% sum = 0 %>
+          <% @event.reviews.each do |review| %>
+            <% sum += review.rating %>
+          <% end %>
+          <% avg = (sum.to_f / @event.reviews.length).round(2) %>
+          <span class="mr-1"><strong><%= avg %></strong></span>
+          <!-- Display stars -->
+          <% avg.round.times do %>
+            <%= image_tag "star-yellow.svg", class: "mb-1", width: "22px" %>
+          <% end %>
+          <% (5 - avg.round).times do %>
+            <%= image_tag "star-gray.svg", class: "mb-1", width: "22px" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-8">
         <% @event.reviews.each do |review| %>
-          <% sum += review.rating %>
-        <% end %>
-        <% avg = (sum.to_f / @event.reviews.length).round(2) %>
-        <span class="mr-1"><strong><%= avg %></strong></span>
-        <!-- Display stars -->
-        <% avg.round.times do %>
-          <%= image_tag "star-yellow.svg", class: "mb-1", width: "22px" %>
-        <% end %>
-        <% (5 - avg.round).times do %>
-          <%= image_tag "star-gray.svg", class: "mb-1", width: "22px" %>
+          <div class="d-flex align-items-center">
+            <!-- User avatar -->
+            <% if review.user.avatar? %>
+              <%= cl_image_tag review.user.avatar, class: "avatar mb-2 mr-3" %>
+            <% else%>
+              <%= image_tag 'seb.png', class: "avatar mb-2 mr-3" %>
+            <% end %>
+            <!-- Display user name & stars -->
+            <div>
+              <p class="mb-0"><strong><%= review.user.first_name %></strong></p>
+              <% review.rating.times do %>
+                <%= image_tag "star-yellow.svg", class: "mb-3", width: "18px" %>
+              <% end %>
+              <% (5 - review.rating).times do %>
+                <%= image_tag "star-gray.svg", class: "mb-3", width: "18px" %>
+              <% end %>
+            </div>
+          </div>
+          <p><%= review.comment %></p>
+          <hr class="my-5">
         <% end %>
       </div>
     </div>
-    <div class="col-sm-12 col-md-8">
-      <% @event.reviews.each do |review| %>
-        <p><%= review.rating %></p>
-        <p><%= review.comment %></p>
-      <% end %>
-    </div>
-  </div>
+  <% end %>
 
 </div>
 
