@@ -83,10 +83,19 @@
       <% end %>
     </div>
   </div>
+  <!-- Tagging of similar events -->
   <h3>Similar Events To This</h3>
   <ul>
-    <% @similar_events.each do |e| %>
-      <li><%= e.title %></li>
+    <% @similar_events.each do |event| %>
+      <div class="card my-3">
+        <div class="card-img-top" style="background-image: url('<%= cl_image_path event.image %>')"></div>
+        <div class="card-body">
+          <h5>
+            <%= link_to event.title, event_path(tag: tag)%>
+          </h5>
+          <p class="annotation"><%= event.location %></p>
+        </div>
+      </div>
     <% end %>
   </ul>
   <hr class="my-5">
