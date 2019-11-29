@@ -1,9 +1,22 @@
-<div class="banner" style="background-image: url(<%= image_path "banner.jpg" %>);">
-  <div class="container">
+<div class="position-relative">
+  <div class="carousel slide" data-ride="carousel" data-interval="5000">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="d-block w-100" src="<%= image_path "banner.jpg" %>">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="<%= image_path "banner2.jpg" %>">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="<%= image_path "banner3.jpg" %>">
+      </div>
+    </div>
+  </div>
+  <div class="container position-absolute search-container">
     <h2>Cook. Share. Love</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscin, sed do eiusmod tempor.</p>
+    <p>We want to create a world where you can always be welcome to a home cooked meal.</p>
     <%= simple_form_for :search, url: events_path, method: "GET", html: { class: 'form-inline' } do |f| %>
-      <%= f.input :search, input_html: { value: "" }, label: false, placeholder: "Chinese" %>
+      <%= f.input :search, input_html: { value: "" }, label: false, placeholder: "Cuisine or Location" %>
       <%= f.submit "Search", class: "btn btn-primary" %>
     <% end %>
   </div>

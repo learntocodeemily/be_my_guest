@@ -1,7 +1,7 @@
-.banner {
-  background-size: cover;
-  background-position: center;
-  padding: 150px 0;
+.search-container {
+  // padding-bottom: 140px 0;
+  left: 10%;
+  top: 35%;
   h2 {
     color: $white;
   }
@@ -21,3 +21,12 @@
   }
 }
 
+.carousel-item img{
+  height: 461px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.form-group {
+  margin-bottom: 0rem;
+}
