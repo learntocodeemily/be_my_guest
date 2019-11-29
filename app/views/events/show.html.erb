@@ -64,7 +64,6 @@
     </div>
   </div>
   <hr class="my-5">
-
   <!-- Participants -->
   <div class="row">
     <div class="col-sm-12 col-md-4">
@@ -85,14 +84,12 @@
       </div>
     </div>
   </div>
-  <h3>Similar Events To This</h3>
   <ul>
     <% @similar_events.each do |e| %>
       <li><%= e.title %></li>
     <% end %>
   </ul>
   <hr class="my-5">
-
   <!-- Location -->
   <div class="row">
     <div class="col-sm-12 col-md-4">
@@ -105,8 +102,6 @@
       ></div>
     </div>
   </div>
-
-
   <!-- Reviews -->
   <% if @event.reviews.length != 0 %>
     <hr class="my-5">
@@ -156,5 +151,4 @@
       </div>
     </div>
   <% end %>
-
 </div>
