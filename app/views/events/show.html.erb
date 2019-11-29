@@ -156,22 +156,32 @@
     </div>
   <% end %>
 
-  <hr class="my-5">
-
-  <!-- Tagging of similar events -->
-  <h3>Similar Events To This</h3>
-  <ul>
-    <% @similar_events.each do |event| %>
-      <div class="card my-3">
-        <div class="card-img-top" style="background-image: url('<%= cl_image_path event.image %>')"></div>
-        <div class="card-body">
-          <h5>
-            <%= link_to event.title, event_path(tag: tag)%>
-          </h5>
-          <p class="annotation"><%= event.location %></p>
-        </div>
+  <!-- Similar events -->
+  <% if @similar_events.length != 0 %>
+    <hr class="my-5">
+    <div class="row">
+      <div class="col-sm-12 col-md-4">
+        <h4>Similar events</h4>
       </div>
-    <% end %>
-  </ul>
+      <div class="col-sm-12 col-md-8">
+        <div class="row">
+          <% @similar_events.each do |event| %>
+            <div class="col-sm-12 col-md-6">
+              <div class="card my-3">
+                <div class="card-img-top" style="background-image: url('<%= cl_image_path event.image %>')"></div>
+                <div class="card-body">
+                  <h5>
+                    <%= link_to event.title, event_path(event.id)%>
+                  </h5>
+                  <p class="annotation"><%= event.location %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+  <% end %>
 
 </div>
