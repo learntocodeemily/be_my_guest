@@ -1,7 +1,12 @@
+.container {
+  position: relative;
+}
 .search-container {
   // padding-bottom: 140px 0;
-  left: 10%;
-  top: 35%;
+  // left: 10%;
+  // top: 35%;
+  position: absolute;
+  top: -300px;
   h2 {
     color: $white;
   }
