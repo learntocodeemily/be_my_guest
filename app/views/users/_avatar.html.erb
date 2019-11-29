@@ -1,0 +1,31 @@
+<div class="card px-5 py-4">
+  <div class="text-center">
+    <% if current_user.avatar? %>
+      <%= cl_image_tag @user.avatar, class: "avatar-large my-3" %>
+    <% else%>
+      <%= image_tag 'seb.png', class: "avatar-large my-3" %>
+    <% end %>
+    <!-- TODO (huifang): Replace user name with data -->
+    <h4><%= @name %>
+      <%= link_to edit_user_registration_path do %>
+        <i class="far fa-edit"></i>
+      <% end %>
+    </h4>
+    <hr class="my-3">
+  </div>
+  <div>
+    <!-- Note: changed static info to db info-->
+    <div class="d-flex justify-content-between">
+      <h6>Diet</h6>
+      <p><%=@user.diet%></p>
+    </div>
+    <div class="d-flex justify-content-between">
+      <h6>Allergy</h6>
+      <p><%= @user.allergy %></p>
+    </div>
+    <div class="d-flex justify-content-between">
+      <h6>Location</h6>
+      <p>Shanghai</p>
+    </div>
+  </div>
+</div>
