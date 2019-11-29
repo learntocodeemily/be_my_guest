@@ -1,24 +1,19 @@
-<div class="main-container">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 offset-sm-2 col-sm-8">
-        <%=simple_form_for [@event] do |f| %>
-          <%= f.input :title, label: "Event Title" %>
-          <%= f.input :cuisine %>
-          <%= f.input :location %>
-          <%= f.date_select :date %>
-          <%= f.input :price, as: :integer %>
-          <%= f.input :capacity, collection: 2..12 %>
-          <%= f.input :description, as: :text  %>
-          <%= f.input :image %>
-          <%= f.input :image_cache, as: :hidden %>
-          <% if edit%>
-            <%= f.submit "edit event", class: "btn btn-ghost border-dark rounded-lg"  %>
-          <% else %>
-            <%= f.submit "add event", class: "btn btn-ghost border-dark rounded-lg"  %>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
+<%=simple_form_for [@event] do |f| %>
+  <%= f.input :title, label: "Event Title" %>
+  <%= f.input :cuisine %>
+  <%= f.input :location %>
+
+  <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
+  <%= f.time_select :time %>
+  <%= f.input :price, as: :integer %>
+  <%= f.input :capacity, collection: 2..12 %>
+  <%= f.input :description, as: :text %>
+  <%= f.input :image %>
+  <%= f.input :image_cache, as: :hidden %>
+  <% if edit %>
+    <%= f.submit "Submit", class: "btn btn-primary text-light btn-block mb-3"  %>
+  <% else %>
+    <%= f.submit "Add event", class: "btn btn-primary text-light btn-block mb-3"  %>
+  <% end %>
+<% end %>
+

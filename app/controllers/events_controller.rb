@@ -5,19 +5,32 @@ class EventsController < ApplicationController
 
 
   def index
+
     # raise
-    @events = policy_scope(Event).order(created_at: :desc)
+    @events = policy_scope(Event).geocoded
     if params[:search].present?
       @search = params[:search][:search]
-      @events = Event.search_by_location_and_cuisine(@search)
+      @events = Event.search_by_location_and_cuisine(@search).order(created_at: :desc)
     else
-      @events = Event.all
+      @events = Event.all.order(created_at: :desc)
     end
+
   end
 
+
   def show
+
     @bookings = @event.bookings
+
+    @markers =
+    [{
+       lat: @event.latitude,
+       lng: @event.longitude,
+       infoWindow: render_to_string(partial: "info_window", locals: { event: @event })
+    }]
   end
+
+
 
   def new
     @event = Event.new

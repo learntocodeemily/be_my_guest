@@ -123,6 +123,7 @@ e2 = Event.create!(title: "Rustic BBQ dinner" ,
                    )
 
 
+
 e3 = Event.create!(title: "Chilli Cook Off" ,
                    location: "Putuo District, Shanghai",
                    date: Faker::Date.between(from: 1.month.ago, to: 1.month.from_now),
@@ -135,10 +136,12 @@ e3 = Event.create!(title: "Chilli Cook Off" ,
                    )
 
 
+
 e4 = Event.create!(title: "Dumpling Dinner" ,
                    location: "Minghang District, Shanghai",
                    date: Faker::Date.between(from: 1.month.ago, to: 1.month.from_now),
                    description: Faker::Restaurant.description,
+
                    cuisine: "Shanghainese",
                    price: [50,100,150,200].sample,
                    capacity: rand(3..10),
@@ -146,10 +149,12 @@ e4 = Event.create!(title: "Dumpling Dinner" ,
                    user: u3
                    )
 
+
 e5 = Event.create!(title: "Sushi Party" ,
                    location: "Minghang District, Shanghai",
                    date: Faker::Date.between(from: 1.month.ago, to: 1.month.from_now),
                    description: Faker::Restaurant.description,
+
                    cuisine: "Japanese",
                    price: [50,100,150,200].sample,
                    capacity: rand(3..10),
@@ -192,6 +197,7 @@ b20 = Booking.create!(payment: true, user: u14, event: e5 )
 b21 = Booking.create!(payment: true, user: u3, event: e5 )
 b22 = Booking.create!(payment: true, user: u4, event: e6 )
 b23 = Booking.create!(payment: true, user: u10, event: e6 )
+
 
 Review.create!(comment: Faker::Restaurant.review,
                rating: rand(1..5), user: u6, booking: b1)
@@ -239,6 +245,7 @@ Review.create!(comment: Faker::Restaurant.review,
                rating: rand(1..5), user: u4, booking: b22)
 Review.create!(comment: Faker::Restaurant.review,
                rating: rand(1..5), user: u10, booking: b23)
+
 
 puts "Created #{Event.count} events"
 puts "Created #{User.count} users"
