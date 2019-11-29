@@ -1,9 +1,7 @@
-.container {
-  padding-bottom: 140px 0;
-  .search-container {
-    left: 10%;
-    top: 50%;
-  }
+.search-container {
+  // padding-bottom: 140px 0;
+  left: 10%;
+  top: 35%;
   h2 {
     color: $white;
   }
@@ -23,9 +21,10 @@
   }
 }
 
-.carousel-item {
-height: 461px;
-object-fit: cover;
+.carousel-item img{
+  height: 461px;
+  width: 100%;
+  object-fit: cover;
 }
 
 .form-group {

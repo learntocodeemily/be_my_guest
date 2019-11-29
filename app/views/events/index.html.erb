@@ -14,9 +14,9 @@
   </div>
   <div class="container position-absolute search-container">
     <h2>Cook. Share. Love</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscin, sed do eiusmod tempor.</p>
+    <p>We want to create a world where you can always be welcome to a home cooked meal.</p>
     <%= simple_form_for :search, url: events_path, method: "GET", html: { class: 'form-inline' } do |f| %>
-      <%= f.input :search, input_html: { value: "" }, label: false, placeholder: "Chinese" %>
+      <%= f.input :search, input_html: { value: "" }, label: false, placeholder: "Cuisine or Location" %>
       <%= f.submit "Search", class: "btn btn-primary" %>
     <% end %>
   </div>
