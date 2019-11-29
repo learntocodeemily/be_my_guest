@@ -64,23 +64,25 @@
     </div>
   </div>
   <hr class="my-5">
+
   <!-- Participants -->
-  <!-- TODO (huifang): Bookings to be seeded -->
   <div class="row">
     <div class="col-sm-12 col-md-4">
       <h4>Participants</h4>
     </div>
     <div class="col-sm-12 col-md-8">
-      <% @bookings.each do |booking| %>
-        <div class="col-sm-12 col-md-6 col-lg-4">
-          <div class="card my-3">
-            <div class="card-img-top" style="background-image: url('<%= cl_image_path booking.event.image %>')"></div>
-            <div class="card-body">
-              <p><%= booking.user.first_name %></p>
-            </div>
+      <div class="d-flex">
+        <% @bookings.each do |booking| %>
+          <div class="mr-4 text-center">
+            <% if booking.user.avatar? %>
+              <%= cl_image_tag booking.user.avatar, class: "avatar-medium my-2" %>
+            <% else%>
+              <%= image_tag 'seb.png', class: "avatar-medium my-2" %>
+            <% end %>
+            <p><%= booking.user.first_name %></p>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
   <h3>Similar Events To This</h3>
@@ -90,28 +92,69 @@
     <% end %>
   </ul>
   <hr class="my-5">
-  <!-- Reviews -->
-  <!-- TODO (huifang): Reviews to be seeded -->
+
+  <!-- Location -->
   <div class="row">
     <div class="col-sm-12 col-md-4">
-      <h4>Reviews</h4>
-      <i class="far fa-star"></i>
-      <i class="far fa-star"></i>
-      <i class="far fa-star"></i>
-      <i class="far fa-star"></i>
-      <i class="far fa-star"></i>
+      <h4>Location</h4>
     </div>
     <div class="col-sm-12 col-md-8">
-      <p>
-        Reviews to be seeded!
-      </p>
+      <div id="map" style="width: 100%; height: 400px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      ></div>
     </div>
   </div>
+
+
+  <!-- Reviews -->
+  <% if @event.reviews.length != 0 %>
+    <hr class="my-5">
+    <div class="row">
+      <div class="col-sm-12 col-md-4">
+        <h4>Reviews</h4>
+        <!-- Calculate average -->
+        <div class="avg-rating">
+          <% sum = 0 %>
+          <% @event.reviews.each do |review| %>
+            <% sum += review.rating %>
+          <% end %>
+          <% avg = (sum.to_f / @event.reviews.length).round(2) %>
+          <span class="mr-1"><strong><%= avg %></strong></span>
+          <!-- Display stars -->
+          <% avg.round.times do %>
+            <%= image_tag "star-yellow.svg", class: "mb-1", width: "22px" %>
+          <% end %>
+          <% (5 - avg.round).times do %>
+            <%= image_tag "star-gray.svg", class: "mb-1", width: "22px" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-8">
+        <% @event.reviews.each do |review| %>
+          <div class="d-flex align-items-center">
+            <!-- User avatar -->
+            <% if review.user.avatar? %>
+              <%= cl_image_tag review.user.avatar, class: "avatar mb-2 mr-3" %>
+            <% else%>
+              <%= image_tag 'seb.png', class: "avatar mb-2 mr-3" %>
+            <% end %>
+            <!-- Display user name & stars -->
+            <div>
+              <p class="mb-0"><strong><%= review.user.first_name %></strong></p>
+              <% review.rating.times do %>
+                <%= image_tag "star-yellow.svg", class: "mb-3", width: "18px" %>
+              <% end %>
+              <% (5 - review.rating).times do %>
+                <%= image_tag "star-gray.svg", class: "mb-3", width: "18px" %>
+              <% end %>
+            </div>
+          </div>
+          <p><%= review.comment %></p>
+          <hr class="my-5">
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
 </div>
-<div
-  id="map"
-  style="width: 100%;
-  height: 600px;"
-  data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-></div>
