@@ -5,12 +5,12 @@
     <% else%>
       <%= image_tag 'seb.png', class: "avatar-large my-3" %>
     <% end %>
-    <!-- TODO (huifang): Replace user name with data -->
-    <h4><%= @name %>
+    <div>
+      <h4 class="d-inline"><%= @name %></h4>
       <%= link_to edit_user_registration_path do %>
-        <i class="far fa-edit"></i>
+        <i class="far fa-edit text-primary ml-2"></i>
       <% end %>
-    </h4>
+    </div>
     <hr class="my-3">
   </div>
   <div>
