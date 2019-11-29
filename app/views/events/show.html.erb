@@ -85,21 +85,7 @@
       </div>
     </div>
   </div>
-  <!-- Tagging of similar events -->
-  <h3>Similar Events To This</h3>
-  <ul>
-    <% @similar_events.each do |event| %>
-      <div class="card my-3">
-        <div class="card-img-top" style="background-image: url('<%= cl_image_path event.image %>')"></div>
-        <div class="card-body">
-          <h5>
-            <%= link_to event.title, event_path(tag: tag)%>
-          </h5>
-          <p class="annotation"><%= event.location %></p>
-        </div>
-      </div>
-    <% end %>
-  </ul>
+
   <hr class="my-5">
 
   <!-- Location -->
@@ -140,28 +126,60 @@
         </div>
       </div>
       <div class="col-sm-12 col-md-8">
-        <% @event.reviews.each do |review| %>
-          <div class="d-flex align-items-center">
-            <!-- User avatar -->
-            <% if review.user.avatar? %>
-              <%= cl_image_tag review.user.avatar, class: "avatar mb-2 mr-3" %>
-            <% else%>
-              <%= image_tag 'seb.png', class: "avatar mb-2 mr-3" %>
-            <% end %>
-            <!-- Display user name & stars -->
-            <div>
-              <p class="mb-0"><strong><%= review.user.first_name %></strong></p>
-              <% review.rating.times do %>
-                <%= image_tag "star-yellow.svg", class: "mb-3", width: "18px" %>
+        <% @event.reviews.each_with_index do |review, index| %>
+          <div class="review">
+            <div class="d-flex align-items-center">
+              <!-- User avatar -->
+              <% if review.user.avatar? %>
+                <%= cl_image_tag review.user.avatar, class: "avatar mb-2 mr-3" %>
+              <% else%>
+                <%= image_tag 'seb.png', class: "avatar mb-2 mr-3" %>
               <% end %>
-              <% (5 - review.rating).times do %>
-                <%= image_tag "star-gray.svg", class: "mb-3", width: "18px" %>
-              <% end %>
+              <!-- Display user name & stars -->
+              <div>
+                <p class="mb-0"><strong><%= review.user.first_name %></strong></p>
+                <% review.rating.times do %>
+                  <%= image_tag "star-yellow.svg", class: "mb-3", width: "18px" %>
+                <% end %>
+                <% (5 - review.rating).times do %>
+                  <%= image_tag "star-gray.svg", class: "mb-3", width: "18px" %>
+                <% end %>
+              </div>
             </div>
+            <p><%= review.comment %></p>
+            <% unless index == @event.reviews.size - 1 %>
+              <hr class="my-5">
+            <% end %>
           </div>
-          <p><%= review.comment %></p>
-          <hr class="my-5">
         <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- Similar events -->
+  <% if @similar_events.length != 0 %>
+    <hr class="my-5">
+    <div class="row">
+      <div class="col-sm-12 col-md-4">
+        <h4>Similar events</h4>
+      </div>
+      <div class="col-sm-12 col-md-8">
+        <div class="row">
+          <% @similar_events.each do |event| %>
+            <div class="col-sm-12 col-md-6">
+              <div class="card my-3">
+                <div class="card-img-top" style="background-image: url('<%= cl_image_path event.image %>')"></div>
+                <div class="card-body">
+                  <h5>
+                    <%= link_to event.title, event_path(event.id)%>
+                  </h5>
+                  <p class="annotation"><%= event.location %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
       </div>
     </div>
   <% end %>
