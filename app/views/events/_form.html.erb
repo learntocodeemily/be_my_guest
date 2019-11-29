@@ -2,12 +2,12 @@
   <%= f.input :title, label: "Event Title" %>
   <%= f.input :cuisine %>
   <%= f.input :location %>
-
   <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
   <%= f.time_select :time %>
   <%= f.input :price, as: :integer %>
   <%= f.input :capacity, collection: 2..12 %>
   <%= f.input :description, as: :text %>
+  <%= f.input :tag_list %>
   <%= f.input :image %>
   <%= f.input :image_cache, as: :hidden %>
   <% if edit %>
@@ -16,4 +16,3 @@
     <%= f.submit "Add event", class: "btn btn-primary text-light btn-block mb-3"  %>
   <% end %>
 <% end %>
-
