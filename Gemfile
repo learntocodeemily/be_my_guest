@@ -18,7 +18,7 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 # pundit
 gem 'pundit'
 gem 'cloudinary', '~> 1.9.1'
-gem 'carrierwave', '~> 1.2'
+gem 'carrierwave', '~> 1.3'
 
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'geocoder'
